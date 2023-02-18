@@ -1,7 +1,6 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {RootComponent} from "./root.component";
-import {GenreScatterplotComponent} from "../core/components/genre-scatterplot/genre-scatterplot.component";
 import {
     ExplorativeScatterplotComponent
 } from "../core/components/explorative-scatterplot/explorative-scatterplot.component";
@@ -12,7 +11,6 @@ import { BookTooltipDetailedComponent } from "src/core/components/book-tooltip-d
 @NgModule({
     declarations: [
         RootComponent,
-        GenreScatterplotComponent,
         ExplorativeScatterplotComponent,
         BookTooltipComponent,
         BookTooltipDetailedComponent,

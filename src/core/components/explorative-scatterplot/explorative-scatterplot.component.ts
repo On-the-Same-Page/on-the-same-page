@@ -51,7 +51,7 @@ export class ExplorativeScatterplotComponent implements OnChanges {
     }
 
     private render() {
-        if (!this.chart || !this.axis || !this.simulation) {
+        if (!this.chart || !this.axis || !this.simulation || this.xAxisVariable == "initial" || this.yAxisVariable == "initial") {
             return;
         }
 

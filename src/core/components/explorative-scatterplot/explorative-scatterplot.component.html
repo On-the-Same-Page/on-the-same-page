@@ -27,4 +27,17 @@
     </select>
 </div>
 
-<otsp-book-tooltip *ngIf="tooltipBook$ | async" [book]="tooltipBook$ | async"></otsp-book-tooltip>
+<div *ngIf="tooltipBookDetailed$ | async" class="overlay" (click)="tooltipBookDetailed$.next(null)">
+</div>
+
+<otsp-book-tooltip *ngIf="tooltipBook$ | async" 
+    [book]="tooltipBook$ | async" 
+    [xAxisVariable]="xAxisVariable" 
+    [yAxisVariable]="yAxisVariable">
+</otsp-book-tooltip>
+
+<otsp-book-tooltip-detailed *ngIf="tooltipBookDetailed$ | async" 
+    [book]="tooltipBookDetailed$ | async" 
+    [xAxisVariable]="xAxisVariable" 
+    [yAxisVariable]="yAxisVariable">
+</otsp-book-tooltip-detailed>

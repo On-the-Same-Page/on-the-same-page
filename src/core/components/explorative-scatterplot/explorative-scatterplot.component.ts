@@ -28,6 +28,7 @@ export class ExplorativeScatterplotComponent implements OnChanges {
     axis: Nullable<Axis> = null;
 
     tooltipBook$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
+    tooltipBookDetailed$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
 
     ngOnChanges(changes: SimpleChanges): void {
         // If we have changes in the data and most importantly, data present, we go on to update the rendered chart.
@@ -45,6 +46,7 @@ export class ExplorativeScatterplotComponent implements OnChanges {
 
             // TODO: add takeUntil for destroyed$
             this.chart.hoveredOverBook$.subscribe(c => this.tooltipBook$.next(c));
+            this.chart.clickedOverBook$.subscribe(c => this.tooltipBookDetailed$.next(c));
         }
     }
 

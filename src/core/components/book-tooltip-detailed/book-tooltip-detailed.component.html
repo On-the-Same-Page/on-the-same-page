@@ -1,6 +1,9 @@
-<!--{{book?.bookData?.description ?? "Nothing to see here. If you want to see more that is a you problem"}}-->
 <p class="title">{{book?.bookData?.title}}</p>
 <p class="authors">{{book?.bookData?.authors_list}}</p>
+
+<img [src]="'./assets/img/yoda.png'" [alt]="'Book cover for ' + book?.bookData?.title">
+
+<p class="goodreads-link">Access the book's <a [href]="book?.bookData?.url">Goodreads page</a>.</p>
 
 <div class="variable-info">
     <p class="values" *ngIf="xAxisVariable!='initial'">
@@ -11,7 +14,6 @@
     </p>
 
     <p class="values" *ngIf="yAxisVariable!='initial'">
-
 
         <span>{{variableNames[yAxisVariable]}}</span>:
         <span>{{book?.bookData?.[yAxisVariable]}}</span>

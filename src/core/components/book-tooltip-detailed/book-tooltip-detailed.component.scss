@@ -1,24 +1,30 @@
 :host {
     position: absolute;
 
-    max-width: 300px;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+
+    width: 300px;
+    max-width: 30vw;
     background-color: white;
     overflow: hidden;
     text-overflow: ellipsis;
 
     padding: .5em;
-    font-size: .8rem;
+    font-size: 1rem;
 
     border: 2px solid var(--text-color);
     background-color: var(--bkg-color);
+    box-shadow: 2px 2px currentColor;
+}
+
+img {
+    width: 100%;
 }
 
 p {
     margin: 0;
-}
-
-p.goodreads-link {
-    font-size: .9em;
 }
 
 .variable-info {

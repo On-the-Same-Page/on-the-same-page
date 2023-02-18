@@ -7,6 +7,7 @@ import {
 } from "../core/components/explorative-scatterplot/explorative-scatterplot.component";
 import {FormsModule} from "@angular/forms";
 import {BookTooltipComponent} from "../core/components/book-tooltip/book-tooltip.component";
+import { BookTooltipDetailedComponent } from "src/core/components/book-tooltip-detailed/book-tooltip-detailed.component";
 
 @NgModule({
     declarations: [
@@ -14,6 +15,7 @@ import {BookTooltipComponent} from "../core/components/book-tooltip/book-tooltip
         GenreScatterplotComponent,
         ExplorativeScatterplotComponent,
         BookTooltipComponent,
+        BookTooltipDetailedComponent,
     ],
     imports: [
         BrowserModule,

@@ -20,6 +20,8 @@ export class Chart {
 
     private _hoveredOver$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
 
+    private _clickedOver$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
+
     constructor(svgElement: SVGSVGElement, data: RawDataSet) {
 
         this.data = data;
@@ -37,6 +39,7 @@ export class Chart {
         this.createMarks();
 
         this.monitorHover();
+        this.monitorClick();
     }
 
     createMarks() {
@@ -61,6 +64,11 @@ export class Chart {
             .on("mouseout", (e) => this.hideTooltip(e));
     }
 
+    monitorClick() {
+        this.marks?.on("click", (e) => this.showTooltipDetailed(e))
+
+    }
+
     hideTooltip(e: any) {
         this._hoveredOver$.next(null);
     }
@@ -70,6 +78,15 @@ export class Chart {
         const y = e.y;
         const data = e.target.__data__ as RawDataPoint;
         this._hoveredOver$.next({
+            x, y, bookData: data
+        });
+    }
+
+    showTooltipDetailed(e: any) {
+        const x = e.x;
+        const y = e.y;
+        const data = e.target.__data__ as RawDataPoint;
+        this._clickedOver$.next({
             x, y, bookData: data
         });
     }
@@ -97,6 +114,10 @@ export class Chart {
 
     public get hoveredOverBook$(): Observable<Nullable<PositionedDataPoint>> {
         return this._hoveredOver$.asObservable();
+    }
+
+    public get clickedOverBook$(): Observable<Nullable<PositionedDataPoint>> {
+        return this._clickedOver$.asObservable();
     }
 
     // TODO: Convert this to more conventional class usage

@@ -2,6 +2,9 @@ import {Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from 
 
 import * as d3 from "d3";
 
+/**
+ * @deprecated
+ */
 @Component({
     selector: "otsp-genre-scatterplot",
     templateUrl: "./genre-scatterplot.component.html",

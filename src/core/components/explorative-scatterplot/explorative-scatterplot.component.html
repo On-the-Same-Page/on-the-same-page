@@ -1,0 +1,30 @@
+<div class="top controls">
+    <div class="main-content">
+        <select [ngModel]="yAxisVariable" (ngModelChange)="yAxisVariableChanged($event)">
+            <option value="initial" disabled="">Select a variable for the Y axis!</option>
+            <option value="numPages">Page count</option>
+            <option value="avgRating">Average rating</option>
+            <option value="ratingsCount">Number of ratings</option>
+            <option value="year_publication">Publication Year</option>
+        </select>
+    </div>
+    <div class="tail-end">
+        <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">
+            <img width="80px" src="assets/img/yoda.png">
+            <span>Use the force!</span>
+        </div>
+    </div>
+</div>
+<svg #mainChart></svg>
+
+<div class="bottom controls">
+    <select [ngModel]="xAxisVariable" (ngModelChange)="xAxisVariableChanged($event)" >
+        <option value="initial" disabled="">Select a variable for the X axis!</option>
+        <option value="numPages">Page count</option>
+        <option value="avgRating">Average rating</option>
+        <option value="ratingsCount">Number of ratings</option>
+        <option value="year_publication">Publication Year</option>
+    </select>
+</div>
+
+<otsp-book-tooltip *ngIf="tooltipBook$ | async" [book]="tooltipBook$ | async"></otsp-book-tooltip>

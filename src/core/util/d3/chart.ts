@@ -75,6 +75,9 @@ export class Chart {
             .attr("transform", (d: any) =>`translate(${d.x}, ${d.y})`)
         ;
 
+        this.monitorClick();
+        this.monitorHover();
+
     }
 
     updateData(data: RawDataSet) {

@@ -11,12 +11,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    padding: .5em;
-    font-size: 1rem;
+    font-size: .8rem;
 
-    border: 2px solid var(--text-color);
+    /*border: 2px solid var(--text-color);
     background-color: var(--bkg-color);
-    box-shadow: 2px 2px currentColor;
+    box-shadow: 2px 2px currentColor;*/
+    background-image: url("../../../assets/img/book-ico.svg");
+    background-color: transparent;
+    background-size: cover;
+    aspect-ratio: 230 / 260;
+    padding: 35px;
+    
 }
 
 img {
@@ -33,6 +38,7 @@ p {
 
 .title {
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .values {

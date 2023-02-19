@@ -3,13 +3,13 @@
 
 <div class="img-data-wrapper">
 
-    <img [src]="'./assets/book-covers/' + book?.bookData?.filename" [alt]="'Book cover for ' + book?.bookData?.title">
+    <img [src]="'assets/book-covers/' + book?.bookData?.filename" [alt]="'Book cover for ' + book?.bookData?.title">
 
     <div class="variable-info">
         <p class="values">
             <span class="variable-info-name">Page count</span>: <span>{{book?.bookData?.['numPages']}}</span>
         </p>
-    
+
         <p class="values">
             <span class="variable-info-name">Average rating</span>: <span>{{book?.bookData?.['avgRating']}}</span>
         </p>
@@ -35,6 +35,6 @@
 
 
 <div class="love-books">
-    <img class="icon-love-books" src="../../../assets/img/love-books.png" alt="A beautiful drawing of an open book with a heart on top of its pages!">
+    <img class="icon-love-books" src="assets/img/love-books.png" alt="A beautiful drawing of an open book with a heart on top of its pages!">
     <p>Add to your favorites!</p>
 </div>

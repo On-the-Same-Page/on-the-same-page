@@ -41,6 +41,7 @@ export class Chart {
 
         this.monitorHover();
         this.monitorClick();
+        this.monitorGenreButtons();
     }
 
     createMarks() {
@@ -113,6 +114,45 @@ export class Chart {
             x, y, bookData: data
         });
     }
+
+    // should this be a component?
+
+    monitorGenreButtons() {
+        const cont: D3Selection = d3.select('.genres-filter-container');
+        cont.on('click', (e) => this.toggleGenreButtons(e))
+    }
+
+    clearGenreButtons() {
+
+        d3.selectAll('.genres-filter-container img').classed('selected', false);
+        this.marks?.classed('dimmed', false);
+
+    }
+
+    toggleGenreButtons(e: any) {
+
+        const tg = e.target;
+
+        if (tg.tagName == 'IMG') {
+
+            const button_already_selected: boolean = tg.classList.contains('selected');
+            console.log(tg, tg.classList, tg.classList.contains('selected'), button_already_selected);
+
+            this.clearGenreButtons();
+
+            if ( !button_already_selected ) {
+
+                tg.classList.add('selected');
+                const genre: string = tg.parentNode.dataset.selectedGenre;
+                this.marks?.classed('dimmed', d => !d[genre]);
+
+            }
+            
+        }
+
+    }
+
+    // end of should this be a component?
 
     protected generateScaleParameters() {
         return {

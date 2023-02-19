@@ -97,6 +97,10 @@ h1 {
     opacity: .7;
     transition: stroke .3s, fill .3s, opacity .3s;
 
+    &.dimmed {
+        opacity: .1;
+    }
+
     &:hover {
         stroke-width: 5;
         stroke: #ED2712;
@@ -138,10 +142,16 @@ h1 {
 .genres-filter-container button {
     background-color: transparent;
     border: none;
+    padding: 0;
 }
+
 
 .genres-filter-container img {
     width: 100%;
+}
+
+.genres-filter-container img.selected {
+    filter: drop-shadow(0px 0px 5px #5580e9);
 }
 
 .overlay {

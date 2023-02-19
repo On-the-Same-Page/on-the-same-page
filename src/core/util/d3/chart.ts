@@ -45,7 +45,7 @@ export class Chart {
     createMarks() {
         this.marks = this.svg
             .selectAll("circle.book")
-            .data(this.data)
+            .data(this.data, (d: any) => d.url)
             .join("circle")
             .classed("book", true)
             .classed("no-force", true)
@@ -59,13 +59,18 @@ export class Chart {
             });
     }
 
+    updateData(data: RawDataSet) {
+        this.data = data;
+        this.createMarks();
+    }
+
     monitorHover() {
         this.marks?.on("mouseover", (e) => this.showTooltip(e))
             .on("mouseout", (e) => this.hideTooltip(e));
     }
 
     monitorClick() {
-        this.marks?.on("click", (e) => this.showTooltipDetailed(e))
+        this.marks?.on("click", (e) => this.showTooltipDetailed(e));
 
     }
 

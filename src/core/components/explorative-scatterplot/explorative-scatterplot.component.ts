@@ -22,7 +22,6 @@ export class ExplorativeScatterplotComponent implements OnChanges {
     yAxisVariable: string = "initial";
     forceEnabled: boolean = false;
 
-
     chart: Nullable<Chart> = null;
     simulation: Nullable<Simulation> = null;
     axis: Nullable<Axis> = null;
@@ -30,11 +29,25 @@ export class ExplorativeScatterplotComponent implements OnChanges {
     tooltipBook$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
     tooltipBookDetailed$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
 
+    yearMax: number = 0;
+    yearMin: number = 0;
+    yearUpperBound: number = 0;
+    yearLowerBound: number = 0;
+
     ngOnChanges(changes: SimpleChanges): void {
         // If we have changes in the data and most importantly, data present, we go on to update the rendered chart.
         if (changes["rawDataSet"] && this.rawDataSet) {
+            this.calculateDataBounds();
             this.updateChart();
         }
+    }
+
+    private calculateDataBounds() {
+        const [yearLowerBound, yearUpperBound] = d3.extent(this.rawDataSet, (d: any) => d.year_publication);
+        this.yearMin = yearLowerBound as unknown as number;
+        this.yearMax = yearUpperBound as unknown as number;
+        this.yearLowerBound = yearLowerBound as unknown as number;
+        this.yearUpperBound = yearUpperBound as unknown as number;
     }
 
     private updateChart(): void {
@@ -54,6 +67,9 @@ export class ExplorativeScatterplotComponent implements OnChanges {
         if (!this.chart || !this.axis || !this.simulation || this.xAxisVariable == "initial" || this.yAxisVariable == "initial") {
             return;
         }
+
+        const filteredData = (this.rawDataSet as any[]).filter(dp => dp.year_publication >= this.yearLowerBound && dp.year_publication <= this.yearUpperBound);
+        this.chart.updateData(filteredData);
 
         // include test to avoid setting up and updating even when the axis are unchanged?
         this.chart.scales.set(this.chart, this.xAxisVariable, "x");
@@ -104,6 +120,16 @@ export class ExplorativeScatterplotComponent implements OnChanges {
 
     toggleForce() {
         this.forceEnabled = !this.forceEnabled;
+        this.render();
+    }
+
+    changeLowerBound(lowerBound: number) {
+        this.yearLowerBound = lowerBound;
+        this.render();
+    }
+
+    changeUpperBound(upperBound: number) {
+        this.yearUpperBound = upperBound;
         this.render();
     }
 }

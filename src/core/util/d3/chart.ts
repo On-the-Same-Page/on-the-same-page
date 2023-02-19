@@ -60,9 +60,25 @@ export class Chart {
             });
     }
 
+    updateMarks(new_data: RawDataSet) {
+
+        this.marks = this.svg
+            .selectAll("circle.book")
+            .data(new_data, (d: any) => d.url)
+            .join("circle")
+            .classed("book", true)
+            .classed("no-force", true)
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", this.r)
+            .attr("transform", (d: any) =>`translate(${d.x}, ${d.y})`)
+        ;
+
+    }
+
     updateData(data: RawDataSet) {
         this.data = data;
-        this.createMarks();
+        this.updateMarks(data);
     }
 
     monitorHover() {

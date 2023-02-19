@@ -78,6 +78,7 @@ export class Chart {
 
     updateData(data: RawDataSet) {
         this.data = data;
+        this.scalesParams = this.generateScaleParameters();
         this.updateMarks(data);
     }
 

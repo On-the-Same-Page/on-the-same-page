@@ -139,8 +139,7 @@ export class Chart {
         if (tg.tagName == 'IMG') {
 
             const button_already_selected: boolean = tg.classList.contains('selected');
-            console.log(tg, tg.classList, tg.classList.contains('selected'), button_already_selected);
-
+            
             this.clearGenreButtons();
 
             if ( !button_already_selected ) {

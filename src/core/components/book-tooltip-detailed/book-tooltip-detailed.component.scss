@@ -21,16 +21,37 @@
     background-size: cover;
     aspect-ratio: 230 / 260;
     padding: 35px;
+    filter: drop-shadow(11px 13px lightgray);
     
 }
 
-img {
-    width: 100%;
+.img-data-wrapper {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.img-data-wrapper > * {
+    width: 45%;
 }
 
 p {
     margin: 0;
 }
+
+.love-books > * {
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.love-books > p {
+    text-align: center;
+    font-size: .8em;
+    margin-top: -1em;
+}
+
 
 .variable-info {
     margin-top: .5em;

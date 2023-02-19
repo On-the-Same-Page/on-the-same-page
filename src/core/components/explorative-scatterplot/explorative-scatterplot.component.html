@@ -7,12 +7,12 @@
                 <option value="numPages">Page count</option>
                 <option value="avgRating">Average rating</option>
                 <option value="ratingsCount">Number of ratings</option>
-                <option value="year_publication">Publication Year</option>
+                <option value="year_publication">Publication year</option>
             </select>
         </div>
     </div>
     <div class="tail-end">
-        <span class="publication-year-filter">Year of Publication filter: </span>
+        <span class="publication-year-filter">Publication year filter: </span>
         <mat-slider [min]="yearMin" [max]="yearMax" [disabled]="yearMax === yearMin" discrete>
             <input matSliderStartThumb [ngModel]="yearLowerBound" (ngModelChange)="changeLowerBound($event)">
             <input matSliderEndThumb [ngModel]="yearUpperBound" (ngModelChange)="changeUpperBound($event)">
@@ -34,7 +34,7 @@
         <option value="numPages">Page count</option>
         <option value="avgRating">Average rating</option>
         <option value="ratingsCount">Number of ratings</option>
-        <option value="year_publication">Publication Year</option>
+        <option value="year_publication">Publication year</option>
     </select>
 </div>
 

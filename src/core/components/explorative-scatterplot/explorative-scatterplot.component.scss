@@ -13,6 +13,12 @@ svg {
 
 mat-slider {
     width: 300px;
+    margin-left: 2rem;
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 1rem;
 }
 
 .controls {
@@ -22,7 +28,9 @@ mat-slider {
     padding: 100px;
 
     &.top {
-        padding-bottom: 20px;
+        padding-bottom: 10px;
+        padding-top: 20px;
+        align-items: end;
 
         > .tail-end {
             margin-left: auto;
@@ -53,6 +61,7 @@ mat-slider {
 
     &.bottom {
         padding-top: 20px;
+        padding-bottom: 20px;
         justify-content: flex-end;
     }
 }

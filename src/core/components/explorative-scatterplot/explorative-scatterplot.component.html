@@ -1,17 +1,20 @@
 <div class="top controls">
-    <div class="main-content">
-        <select [ngModel]="yAxisVariable" (ngModelChange)="yAxisVariableChanged($event)">
-            <option value="initial" disabled="">Select a variable for the Y axis!</option>
-            <option value="numPages">Page count</option>
-            <option value="avgRating">Average rating</option>
-            <option value="ratingsCount">Number of ratings</option>
-            <option value="year_publication">Publication Year</option>
-        </select>
-
-        <mat-slider [min]="yearMin" [max]="yearMax" [disabled]="yearMax === yearMin">
-            <input matSliderStartThumb [ngModel]="yearLowerBound" (ngModelChange)="changeLowerBound($event)">
-            <input matSliderEndThumb [ngModel]="yearUpperBound" (ngModelChange)="changeUpperBound($event)">
-        </mat-slider>
+    <div class="main-content-wrapper">
+        <h1>On the Same Page</h1>
+        <div class="main-content">
+            <select [ngModel]="yAxisVariable" (ngModelChange)="yAxisVariableChanged($event)">
+                <option value="initial" disabled="">Select a variable for the Y axis!</option>
+                <option value="numPages">Page count</option>
+                <option value="avgRating">Average rating</option>
+                <option value="ratingsCount">Number of ratings</option>
+                <option value="year_publication">Publication Year</option>
+            </select>
+    
+            <mat-slider [min]="yearMin" [max]="yearMax" [disabled]="yearMax === yearMin">
+                <input matSliderStartThumb [ngModel]="yearLowerBound" (ngModelChange)="changeLowerBound($event)">
+                <input matSliderEndThumb [ngModel]="yearUpperBound" (ngModelChange)="changeUpperBound($event)">
+            </mat-slider>
+        </div>
     </div>
     <div class="tail-end">
         <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">

@@ -11,6 +11,7 @@ export class Chart {
     r: number = 4;
 
     margin: number = 100;
+    margin_v: number = 20;
 
     data: RawDataSet;
 
@@ -100,7 +101,7 @@ export class Chart {
         return {
             ranges: {
                 x: [this.margin, this.w - this.margin],
-                y: [this.h - this.margin, this.margin]
+                y: [this.h - this.margin_v, this.margin_v]
             },
             domains: {
                 numPages: [0, Math.max(...this.data.map((d: any) => d.numPages))],

@@ -17,15 +17,18 @@
         </div>
     </div>
     <div class="tail-end">
-        <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">
-            <span>Use the force!</span>
-            <img width="80px" src="assets/img/yoda.png">
-        </div>
+
+        <button class="filters">Genres</button>
+
     </div>
 </div>
 <svg #mainChart></svg>
 
 <div class="bottom controls">
+    <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">
+        <span>Use the force!</span>
+        <img class="force-icon" src="assets/img/yoda.png">
+    </div>
     <select [ngModel]="xAxisVariable" (ngModelChange)="xAxisVariableChanged($event)" >
         <option value="initial" disabled="">Select a variable for the X axis!</option>
         <option value="numPages">Page count</option>
@@ -33,6 +36,25 @@
         <option value="ratingsCount">Number of ratings</option>
         <option value="year_publication">Publication Year</option>
     </select>
+</div>
+
+<div class="genres-filter-container active">
+    
+    <button class="genre-button" data-selected-genre="Science Fiction"><img src="../../../assets/img/sci-fi.png" alt="A beautiful rocket" class="genre-icon"></button>
+
+    <button class="genre-button" data-selected-genre="Historical Fiction"><img src="../../../assets/img/history-fic.png" alt="" class="genre-icon"></button>
+
+    <button class="genre-button" data-selected-genre="Novels"><img src="../../../assets/img/other-fiction.png" alt="" class="genre-icon"></button>
+
+    <button class="genre-button" data-selected-genre="Thriller"><img src="../../../assets/img/thriller.png" alt="" class="genre-icon"></button>
+
+    <button class="genre-button" data-selected-genre="Science Fiction"><img src="../../../assets/img/mistery.png" alt="A scary knife" class="genre-icon"></button>
+    
+    <button class="genre-button" data-selected-genre="Romance"><img src="../../../assets/img/romance.png" alt="Beautiful hearts" class="genre-icon"></button>
+    
+    <button class="genre-button" data-selected-genre="Fantasy"><img src="../../../assets/img/fantasy.png" alt="A beautiful unicorn" class="genre-icon"></button>
+
+    <button class="genre-button" data-selected-genre="Nonfiction"><img src="../../../assets/img/non-fiction.png" alt="" class="genre-icon"></button>    
 </div>
 
 <div *ngIf="tooltipBookDetailed$ | async" class="overlay" (click)="tooltipBookDetailed$.next(null)">

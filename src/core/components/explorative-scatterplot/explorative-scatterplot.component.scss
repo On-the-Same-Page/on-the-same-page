@@ -36,28 +36,6 @@ h1 {
 
         > .tail-end {
             margin-left: auto;
-
-            > .force-button {
-                font-size: 13px;
-                border: 2px solid saddlebrown;
-                border-radius: 1em;
-                padding: 0.4em 0.6em;
-                background-color: var(--bkg-color);
-                width: 80px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                transform-origin: center center;
-                cursor: pointer;
-
-                &.active {
-                    box-shadow: 0 0 20px 5px gold;
-                }
-
-                > span {
-                    text-align: center;
-                }
-            }
         }
     }
 
@@ -65,7 +43,36 @@ h1 {
         padding-top: 20px;
         padding-bottom: 20px;
         justify-content: flex-end;
+        justify-content: space-between;
+
+        > .force-button {
+            font-size: 13px;
+            border: 2px solid saddlebrown;
+            border-radius: 1em;
+            padding: 0.4em 0.6em;
+            background-color: var(--bkg-color);
+            height: 35px;
+
+            display: flex;
+            flex-direction: row;
+            flex-grow: 0;
+            align-items: center;
+            transform-origin: center center;
+            cursor: pointer;
+
+            &.active {
+                box-shadow: 0 0 20px 5px gold;
+            }
+
+            > span {
+                text-align: center;
+            }
+        }
     }
+}
+
+.force-icon {
+    height: 15px;
 }
 
 
@@ -85,6 +92,41 @@ h1 {
     &.no-force {
         transition: transform .8s;
     }
+}
+
+.filters {
+    border: none;
+    background-color: transparent;
+
+    padding: .5em .3em;
+    border: 2px solid transparent;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+
+}
+
+.genres-filter-container {
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 50vh;
+    transform: translate(100%, -50%);
+    transition: transform .4s;
+}
+
+.genres-filter-container.active {
+    transform: translate(0, -50%);
+}
+
+.genres-filter-container button {
+    background-color: transparent;
+    border: none;
+}
+
+.genres-filter-container img {
+    width: 100%;
 }
 
 .overlay {

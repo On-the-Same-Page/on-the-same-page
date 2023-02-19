@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v2
-            -   uses: fregante/setup-git-user@v1
+            # -   uses: fregante/setup-git-user@v1
 
             -   name: Setup Node.js 16.x
                 uses: actions/setup-node@v1
@@ -34,12 +34,15 @@ jobs:
                 run: |
                     npm ci
 
-            -   name: Build
-                run: |
-                    npm run build
+            #-   name: Build
+            #    run: |
+            #        npm run build
 
-            -   name: Deploy
+            -   name: Deploy to GitHub Pages
+                uses: crazy-max/ghaction-github-pages@v3
+                with:
+                    target_branch: gh-pages
+                    build_dir: dist/on-the-same-page
                 env:
-                    GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
-                run: |
-                    npm run deploy
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

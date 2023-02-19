@@ -24,3 +24,23 @@ select {
     background-color: transparent;
     border: 2px solid black;
 }
+
+.tick text {
+    font-size: 12px;
+}
+
+@media (min-width: 1200px) {
+
+    .tick text {
+        font-size: 14px;
+    }
+    
+}
+
+@media (min-width: 1900px) {
+
+    .tick text {
+        font-size: 16px;
+    }
+    
+}

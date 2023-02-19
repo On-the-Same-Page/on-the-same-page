@@ -99,6 +99,7 @@ h1 {
 
     &.dimmed {
         opacity: .1;
+        pointer-events: none;
     }
 
     &:hover {
@@ -109,7 +110,7 @@ h1 {
     }
 
     &.no-force {
-        transition: transform .8s;
+        transition: transform .8s, opacity .4s;
     }
 }
 

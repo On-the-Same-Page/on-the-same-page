@@ -5,8 +5,7 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "watch": "ng build --watch --configuration development",
-        "deploy": "ng deploy --base-href=/on-the-same-page/"
+        "watch": "ng build --watch --configuration development"
     },
     "private": true,
     "dependencies": {
@@ -37,7 +36,6 @@
         "@types/d3": "^7.4.0",
         "@typescript-eslint/eslint-plugin": "^5.48.0",
         "@typescript-eslint/parser": "^5.48.0",
-        "angular-cli-ghpages": "^1.0.5",
         "eslint": "^8.31.0",
         "typescript": "~4.9.4"
     }

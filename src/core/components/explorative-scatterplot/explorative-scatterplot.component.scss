@@ -9,6 +9,7 @@ svg {
     display: block;
     width: 100%;
     flex-grow: 1;
+    background-color: var(--bkg-color);
 }
 
 mat-slider {
@@ -26,6 +27,7 @@ h1 {
     flex-direction: row;
     flex-shrink: 0;
     padding: 100px;
+    background-color: var(--bkg-color);
 
     &.top {
         padding-bottom: 10px;

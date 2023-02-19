@@ -47,11 +47,12 @@ h1 {
 
         > .force-button {
             font-size: 13px;
-            border: 2px solid saddlebrown;
+            border: 2px solid currentColor;
             border-radius: 1em;
             padding: 0.4em 0.6em;
             background-color: var(--bkg-color);
             height: 35px;
+            box-sizing: border-box;
 
             display: flex;
             flex-direction: row;
@@ -72,7 +73,8 @@ h1 {
 }
 
 .force-icon {
-    height: 15px;
+    height: 100%;
+    margin-left: .6em;
 }
 
 

@@ -9,16 +9,16 @@
                 <option value="ratingsCount">Number of ratings</option>
                 <option value="year_publication">Publication Year</option>
             </select>
-    
-            <mat-slider [min]="yearMin" [max]="yearMax" [disabled]="yearMax === yearMin">
-                <input matSliderStartThumb [ngModel]="yearLowerBound" (ngModelChange)="changeLowerBound($event)">
-                <input matSliderEndThumb [ngModel]="yearUpperBound" (ngModelChange)="changeUpperBound($event)">
-            </mat-slider>
         </div>
     </div>
     <div class="tail-end">
+        <span class="publication-year-filter">Year of Publication filter: </span>
+        <mat-slider [min]="yearMin" [max]="yearMax" [disabled]="yearMax === yearMin" discrete>
+            <input matSliderStartThumb [ngModel]="yearLowerBound" (ngModelChange)="changeLowerBound($event)">
+            <input matSliderEndThumb [ngModel]="yearUpperBound" (ngModelChange)="changeUpperBound($event)">
+        </mat-slider>
 
-        <button class="filters">Genres</button>
+        <!--<button class="filters">Genres</button>-->
 
     </div>
 </div>

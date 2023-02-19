@@ -36,6 +36,9 @@ h1 {
 
         > .tail-end {
             margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
 
@@ -75,6 +78,16 @@ h1 {
 .force-icon {
     height: 100%;
     margin-left: .6em;
+}
+
+.slider-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.publication-year-filter {
+    font-size: .8rem;
 }
 
 

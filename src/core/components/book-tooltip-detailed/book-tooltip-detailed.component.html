@@ -6,23 +6,33 @@
     <img [src]="'./assets/book-covers/' + book?.bookData?.filename" [alt]="'Book cover for ' + book?.bookData?.title">
 
     <div class="variable-info">
-        <p class="values" *ngIf="xAxisVariable!='initial'">
-    
-            <span>{{variableNames[xAxisVariable]}}</span>:
-            <span>{{book?.bookData?.[xAxisVariable]}}</span>
-    
+        <p class="values">
+            <span class="variable-info-name">Page count</span>: <span>{{book?.bookData?.['numPages']}}</span>
         </p>
     
-        <p class="values" *ngIf="yAxisVariable!='initial'">
-    
-            <span>{{variableNames[yAxisVariable]}}</span>:
-            <span>{{book?.bookData?.[yAxisVariable]}}</span>
-    
+        <p class="values">
+            <span class="variable-info-name">Average rating</span>: <span>{{book?.bookData?.['avgRating']}}</span>
         </p>
+
+        <p class="values">
+            <span class="variable-info-name">Number of ratings</span>: <span>{{book?.bookData?.['ratingsCount']}}</span>
+        </p>
+
+        <p class="values">
+            <span class="variable-info-name">Publication year</span>: <span>{{book?.bookData?.['year_publication']}}</span>
+        </p>
+
+        <p class="values">
+            <span class="variable-info-name">Genres</span>: <span>{{book?.bookData?.['genres_list']}}</span>
+        </p>
+
+        <p class="goodreads-link">Access the book's <a [href]="book?.bookData?.url">Goodreads page</a>.</p>
+
     </div>
+
 </div>
 
-<p class="goodreads-link">Access the book's <a [href]="book?.bookData?.url">Goodreads page</a>.</p>
+
 
 <div class="love-books">
     <img class="icon-love-books" src="../../../assets/img/love-books.png" alt="A beautiful drawing of an open book with a heart on top of its pages!">

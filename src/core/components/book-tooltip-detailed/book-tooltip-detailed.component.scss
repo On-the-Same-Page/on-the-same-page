@@ -5,7 +5,7 @@
     top: 50vh;
     transform: translate(-50%, -50%);
 
-    width: 300px;
+    width: 350px;
     max-width: 30vw;
     background-color: white;
     overflow: hidden;
@@ -20,7 +20,7 @@
     background-color: transparent;
     background-size: cover;
     aspect-ratio: 230 / 260;
-    padding: 35px;
+    padding: 30px;
     filter: drop-shadow(11px 13px lightgray);
     
 }
@@ -33,11 +33,23 @@
 }
 
 .img-data-wrapper > * {
-    width: 45%;
+    width: 49%;
 }
 
 p {
     margin: 0;
+}
+
+p.goodreads-link, p.authors {
+    margin-top: .5em;
+}
+
+p.values {
+    margin-bottom: .5em;
+}
+
+span.variable-info-name {
+    font-weight: bold;
 }
 
 .love-books > * {
@@ -49,12 +61,13 @@ p {
 .love-books > p {
     text-align: center;
     font-size: .8em;
-    margin-top: -1em;
+    margin-top: -20px;
 }
 
-
 .variable-info {
-    margin-top: .5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .title {
@@ -62,6 +75,6 @@ p {
     font-size: 1rem;
 }
 
-.values {
+.values, p.goodreads-link {
     font-size: .9em;
 }

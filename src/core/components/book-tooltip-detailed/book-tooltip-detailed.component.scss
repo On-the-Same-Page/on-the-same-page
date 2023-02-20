@@ -32,15 +32,15 @@
     justify-content: space-between;
 }
 
-.img-data-wrapper > * {
-    width: 49%;
+.img-data-wrapper > img {
+    width: 40%;
 }
 
 p {
     margin: 0;
 }
 
-p.goodreads-link, p.authors {
+p.goodreads-link {
     margin-top: .5em;
 }
 
@@ -68,6 +68,7 @@ span.variable-info-name {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: .6em;
 }
 
 .title {

@@ -26,10 +26,10 @@ export class Simulation {
             .velocityDecay(0.2)
             .force("x", d3.forceX().strength(this.strength / 2).x(chart.w / 2))
             .force("y", d3.forceY().strength(this.strength / 2).y(chart.h / 2))
-            .force("collision", d3.forceCollide().strength(this.strength * 4).radius(chart.r))
+            .force("collision", d3.forceCollide().strength(this.strength * 5).radius(chart.r))
             .alphaMin(0.25)//.alphaMin(0.05)
             .on("tick", this.update)
-            .on("end", this.savePositions)
+            //.on("end", this.savePositions)
             .stop();
     }
 
@@ -39,6 +39,7 @@ export class Simulation {
 
     private update() {
         d3.selectAll(".book")
+            .classed('no-force', false)
             .attr("transform", (d: any) => `translate(${d.x}, ${d.y})`);
     }
 

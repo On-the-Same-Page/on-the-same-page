@@ -33,6 +33,12 @@ export class Chart {
         this.w = parseInt(window.getComputedStyle(svgElement).width.slice(0, -2), 10);
         this.h = parseInt(window.getComputedStyle(svgElement).height.slice(0, -2), 10);
 
+        if (window.innerWidth > 1600) {
+            this.r = 5;
+            this.margin = 150;
+            this.margin_v = 50;
+        }
+
         svg.attr("viewBox", `0 0 ${this.w} ${this.h}`);
 
         this.scalesParams = this.generateScaleParameters();

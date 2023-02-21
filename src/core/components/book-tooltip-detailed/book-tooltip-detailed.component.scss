@@ -6,8 +6,6 @@
     transform: translate(-50%, -50%);
 
     width: 350px;
-    max-width: 30vw;
-    background-color: white;
     overflow: hidden;
     text-overflow: ellipsis;
 
@@ -16,12 +14,17 @@
     /*border: 2px solid var(--text-color);
     background-color: var(--bkg-color);
     box-shadow: 2px 2px currentColor;*/
-    background-image: url("../../../assets/img/book-ico.svg");
-    background-color: transparent;
+    /*background-image: url(book-ico.svg); */
+    background-color: var(--bkg-color);
     background-size: cover;
-    aspect-ratio: 230 / 260;
+    min-height: 400px;
+    /* aspect-ratio: 230/260; */
     padding: 35px 25px 25px 35px;
-    filter: drop-shadow(11px 13px lightgray);
+    /* filter: drop-shadow(11px 13px lightgray); */
+    border: 9px solid black;
+    border-radius: 70px 20px 20px 70px;
+    max-height: 90vh;
+    box-shadow: 11px 13px lightgrey;
 
 }
 

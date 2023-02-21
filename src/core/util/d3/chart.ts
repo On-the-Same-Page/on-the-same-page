@@ -13,6 +13,11 @@ export class Chart {
     margin: number = 100;
     margin_v: number = 20;
 
+    grid_x0: number = 0;
+    grid_y0: number = 0;
+    grid_ni: number = 0;
+    grid_nj: number = 0;
+
     data: RawDataSet;
 
     marks: Nullable<D3Selection> = null;
@@ -39,15 +44,30 @@ export class Chart {
             this.margin_v = 50;
         }
 
+        this.prepare_grid();
+
         svg.attr("viewBox", `0 0 ${this.w} ${this.h}`);
 
         this.scalesParams = this.generateScaleParameters();
 
         this.createMarks();
+        this.makeOpeningTitle();
 
         this.monitorHover();
         this.monitorClick();
         this.monitorGenreButtons();
+    }
+
+    prepare_grid() {
+
+        this.grid_ni = Math.max(...this.data.map( (d: any) => d.pos_i)) + 1;
+        this.grid_nj = Math.max(...this.data.map( (d: any) => d.pos_j)) + 1;
+
+        this.grid_x0 = (this.w - this.grid_ni * 2 * this.r) / 2;
+        this.grid_y0 = (this.h - this.grid_nj * 2 * this.r) / 2;
+
+        console.log(this.grid_ni, this.grid_nj, this.grid_x0, this.grid_y0, this.h);
+        
     }
 
     createMarks() {
@@ -83,6 +103,27 @@ export class Chart {
 
         this.monitorClick();
         this.monitorHover();
+
+    }
+
+    makeOpeningTitle() {
+
+        this.marks
+            ?.classed('no-force', false) // to let D3 handle this first transition
+            ?.transition()
+            .duration(2000)
+              ?.attr('transform', (d: any) => {
+                d.x = this.grid_x0 + this.r * (1 + 2 * d.pos_i);
+                d.y = this.grid_y0 + this.r * (1 + 2 * d.pos_j);
+                return `translate(${d.x}, ${d.y})`
+            })
+        ;
+
+        setTimeout(
+            () => {
+                this.marks?.classed('no-force', true);
+            }, 2500
+        );
 
     }
 

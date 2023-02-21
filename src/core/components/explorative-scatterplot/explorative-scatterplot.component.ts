@@ -26,6 +26,8 @@ export class ExplorativeScatterplotComponent implements OnChanges {
     simulation: Nullable<Simulation> = null;
     axis: Nullable<Axis> = null;
 
+    never_rendered: boolean = true;
+
     tooltipBook$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
     tooltipBookDetailed$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
 
@@ -55,7 +57,7 @@ export class ExplorativeScatterplotComponent implements OnChanges {
             this.chart = new Chart(this.mainChart.nativeElement, this.rawDataSet);
             this.simulation = new Simulation(this.rawDataSet, this.chart);
             this.axis = new Axis();
-            this.simulation.restart();
+            //this.simulation.restart();
 
             // TODO: add takeUntil for destroyed$
             this.chart.hoveredOverBook$.subscribe(c => this.tooltipBook$.next(c));
@@ -74,6 +76,12 @@ export class ExplorativeScatterplotComponent implements OnChanges {
         // include test to avoid setting up and updating even when the axis are unchanged?
         this.chart.scales.set(this.chart, this.xAxisVariable, "x");
         this.chart.scales.set(this.chart, this.yAxisVariable, "y");
+
+        // 
+        if(this.never_rendered) {
+            document.querySelector('h1')?.classList.remove('no-show');
+            this.never_rendered = false;
+        }
 
         if (!this.axis.el_x && !this.axis.el_y) {
             this.axis.build(this.chart);

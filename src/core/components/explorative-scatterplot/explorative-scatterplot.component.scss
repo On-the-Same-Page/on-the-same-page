@@ -20,7 +20,13 @@ mat-slider {
 h1 {
     margin: 0;
     margin-bottom: 1rem;
+    transition: opacity 1s;
 }
+
+h1.no-show {
+    opacity: 0;
+}
+
 
 .controls {
     display: flex;

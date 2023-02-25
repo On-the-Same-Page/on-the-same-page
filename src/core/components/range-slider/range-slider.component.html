@@ -1,0 +1,12 @@
+<div class="column">
+    <mat-slider [min]="lowerBound" [max]="upperBound">
+        <input matSliderStartThumb [ngModel]="numberMin" (ngModelChange)="handleMinChanged($event)">
+        <input matSliderEndThumb [ngModel]="numberMax" (ngModelChange)="handleMaxChanged($event)">
+    </mat-slider>
+
+    <div class="row">
+        <input type="number" [min]="lowerBound" [max]="upperBound" [ngModel]="numberMin" (ngModelChange)="handleMinChanged($event)">
+        <input type="number" [min]="lowerBound" [max]="upperBound" [ngModel]="numberMax" (ngModelChange)="handleMaxChanged($event)">
+    </div>
+</div>
+

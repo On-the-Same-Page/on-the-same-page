@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {BookTooltipComponent} from "../core/components/book-tooltip/book-tooltip.component";
 import {BookTooltipDetailedComponent} from "src/core/components/book-tooltip-detailed/book-tooltip-detailed.component";
 import {MatSliderModule} from "@angular/material/slider";
+import { RangeSliderComponent } from "src/core/components/range-slider/range-slider.component";
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import {MatSliderModule} from "@angular/material/slider";
         ExplorativeScatterplotComponent,
         BookTooltipComponent,
         BookTooltipDetailedComponent,
+        RangeSliderComponent,
     ],
     imports: [
         BrowserModule,

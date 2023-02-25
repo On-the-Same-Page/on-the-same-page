@@ -44,6 +44,10 @@ export class ExplorativeScatterplotComponent implements OnChanges {
         }
     }
 
+    placeHolderMethod(max:number){
+        console.log(max)
+    }
+
     private calculateDataBounds() {
         const [yearLowerBound, yearUpperBound] = d3.extent(this.rawDataSet, (d: any) => d.year_publication);
         this.yearMin = yearLowerBound as unknown as number;

@@ -108,6 +108,10 @@ h1.no-show {
         pointer-events: none;
     }
 
+    &:not(.dimmed) {
+        cursor: pointer;
+    }
+
     &:hover {
         stroke-width: 5;
         stroke: #ED2712;

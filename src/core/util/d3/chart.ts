@@ -1,4 +1,4 @@
-import {D3Selection, Nullable, PositionedDataPoint, RawDataPoint, RawDataSet} from "../../interfaces";
+import {D3Selection, Genre, Nullable, PositionedDataPoint, RawDataPoint, RawDataSet} from "../../interfaces";
 
 import * as d3 from "d3";
 import {BehaviorSubject, Observable} from "rxjs";
@@ -55,7 +55,6 @@ export class Chart {
 
         this.monitorHover();
         this.monitorClick();
-        this.monitorGenreButtons();
     }
 
     prepare_grid() {
@@ -165,37 +164,14 @@ export class Chart {
         });
     }
 
-    // should this be a component?
-
-    monitorGenreButtons() {
-        const cont: D3Selection = d3.select(".genres-filter-container");
-        cont.on("click", (e) => this.toggleGenreButtons(e));
-    }
-
-    clearGenreButtons() {
-
-        d3.selectAll(".genres-filter-container img").classed("selected", false);
-        this.marks?.classed("dimmed", false);
-
-    }
-
-    toggleGenreButtons(e: any) {
-        const tg = e.target;
-
-        if (tg.tagName == "IMG") {
-            const button_already_selected: boolean = tg.classList.contains("selected");
-
-            this.clearGenreButtons();
-
-            if (!button_already_selected) {
-                tg.classList.add("selected");
-                const genre: string = tg.parentNode.dataset.selectedGenre;
-                this.marks?.classed("dimmed", d => !d[genre]);
-            }
+    updateGenreFilter(genre: Nullable<Genre>) {
+        if (!genre) {
+            this.marks?.classed("dimmed", false);
+            return;
         }
-    }
 
-    // end of should this be a component?
+        this.marks?.classed("dimmed", d => !d[genre]);
+    }
 
     protected generateScaleParameters() {
         return {

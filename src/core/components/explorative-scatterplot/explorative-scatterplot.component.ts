@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from "@angular/core";
-import {Nullable, PositionedDataPoint, RawDataSet} from "../../interfaces";
+import {Genre, Nullable, PositionedDataPoint, RawDataSet} from "../../interfaces";
 import {Chart} from "../../util/d3/chart";
 import {Simulation} from "../../util/d3/simulation";
 import {Axis} from "../../util/d3/axis";
@@ -13,6 +13,8 @@ import {BehaviorSubject} from "rxjs";
     styleUrls: ["./explorative-scatterplot.component.scss"]
 })
 export class ExplorativeScatterplotComponent implements OnChanges {
+    readonly GENRE_LIST: Genre[] = Object.values(Genre);
+
     @ViewChild("mainChart", {static: true})
     mainChart!: ElementRef<SVGSVGElement>;
 
@@ -36,6 +38,8 @@ export class ExplorativeScatterplotComponent implements OnChanges {
     yearUpperBound: number = 0;
     yearLowerBound: number = 0;
 
+    genreFilter: Nullable<Genre> = null;
+
     ngOnChanges(changes: SimpleChanges): void {
         // If we have changes in the data and most importantly, data present, we go on to update the rendered chart.
         if (changes["rawDataSet"] && this.rawDataSet) {
@@ -44,8 +48,13 @@ export class ExplorativeScatterplotComponent implements OnChanges {
         }
     }
 
-    placeHolderMethod(max:number){
-        console.log(max)
+    public toggleGenre(genre: Genre) {
+        if (this.genreFilter === genre) {
+            this.genreFilter = null;
+        } else {
+            this.genreFilter = genre;
+        }
+        this.chart?.updateGenreFilter(this.genreFilter);
     }
 
     private calculateDataBounds() {
@@ -81,9 +90,9 @@ export class ExplorativeScatterplotComponent implements OnChanges {
         this.chart.scales.set(this.chart, this.xAxisVariable, "x");
         this.chart.scales.set(this.chart, this.yAxisVariable, "y");
 
-        // 
+        //
         if(this.never_rendered) {
-            document.querySelector('h1')?.classList.remove('no-show');
+            document.querySelector("h1")?.classList.remove("no-show");
             this.never_rendered = false;
         }
 

@@ -38,10 +38,16 @@ h1.no-show {
     &.top {
         padding-bottom: 10px;
         padding-top: 20px;
+        justify-content: space-between;
         align-items: end;
 
+        > .center-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
         > .tail-end {
-            margin-left: auto;
             display: flex;
             flex-direction: column;
             align-items: center;

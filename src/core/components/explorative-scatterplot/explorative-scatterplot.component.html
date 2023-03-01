@@ -11,6 +11,14 @@
             </select>
         </div>
     </div>
+    <div class="center-content">
+        <otsp-genre-button *ngFor="let genre of GENRE_LIST"
+                           [matTooltip]="genre"
+                           [genre]="genre"
+                           [selected]="genreFilter === genre"
+                           (genreSelected)="toggleGenre(genre)"></otsp-genre-button>
+
+    </div>
     <div class="tail-end">
         <span class="publication-year-filter">Publication year filter: </span>
         <mat-slider [min]="yearMin" [max]="yearMax" [disabled]="yearMax === yearMin" discrete>
@@ -41,14 +49,6 @@
         <option value="ratingsCount">Number of ratings</option>
         <option value="year_publication">Publication year</option>
     </select>
-</div>
-
-<div class="genres-filter-container active">
-    <otsp-genre-button *ngFor="let genre of GENRE_LIST"
-                       [matTooltip]="genre"
-                       [genre]="genre"
-                       [selected]="genreFilter === genre"
-                       (genreSelected)="toggleGenre(genre)"></otsp-genre-button>
 </div>
 
 <div *ngIf="tooltipBookDetailed$ | async" class="overlay" (click)="tooltipBookDetailed$.next(null)">

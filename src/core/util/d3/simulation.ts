@@ -39,7 +39,7 @@ export class Simulation {
 
     private update() {
         d3.selectAll(".book")
-            .classed('no-force', false)
+            .classed("no-force", false)
             .attr("transform", (d: any) => `translate(${d.x}, ${d.y})`);
     }
 

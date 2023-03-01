@@ -1,8 +1,7 @@
 import {Chart} from "./chart";
 import {D3Axis, D3Selection, Nullable} from "../../interfaces";
 import * as d3 from "d3";
-import {AxisMap, AxisType} from "../../interfaces/axis.interface";
-
+import {AxisMap} from "../../interfaces/axis.interface";
 
 export class Axis {
 

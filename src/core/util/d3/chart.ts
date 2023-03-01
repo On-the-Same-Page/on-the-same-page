@@ -60,14 +60,14 @@ export class Chart {
 
     prepare_grid() {
 
-        this.grid_ni = Math.max(...this.data.map( (d: any) => d.pos_i)) + 1;
-        this.grid_nj = Math.max(...this.data.map( (d: any) => d.pos_j)) + 1;
+        this.grid_ni = Math.max(...this.data.map((d: any) => d.pos_i)) + 1;
+        this.grid_nj = Math.max(...this.data.map((d: any) => d.pos_j)) + 1;
 
         this.grid_x0 = (this.w - this.grid_ni * 2 * this.r) / 2;
         this.grid_y0 = (this.h - this.grid_nj * 2 * this.r) / 2;
 
         console.log(this.grid_ni, this.grid_nj, this.grid_x0, this.grid_y0, this.h);
-        
+
     }
 
     createMarks() {
@@ -98,7 +98,7 @@ export class Chart {
             .attr("cx", 0)
             .attr("cy", 0)
             .attr("r", this.r)
-            .attr("transform", (d: any) =>`translate(${d.x}, ${d.y})`)
+            .attr("transform", (d: any) => `translate(${d.x}, ${d.y})`)
         ;
 
         this.monitorClick();
@@ -109,19 +109,19 @@ export class Chart {
     makeOpeningTitle() {
 
         this.marks
-            ?.classed('no-force', false) // to let D3 handle this first transition
+            ?.classed("no-force", false) // to let D3 handle this first transition
             ?.transition()
             .duration(2000)
-              ?.attr('transform', (d: any) => {
+            ?.attr("transform", (d: any) => {
                 d.x = this.grid_x0 + this.r * (1 + 2 * d.pos_i);
                 d.y = this.grid_y0 + this.r * (1 + 2 * d.pos_j);
-                return `translate(${d.x}, ${d.y})`
+                return `translate(${d.x}, ${d.y})`;
             })
         ;
 
         setTimeout(
             () => {
-                this.marks?.classed('no-force', true);
+                this.marks?.classed("no-force", true);
             }, 2500
         );
 
@@ -168,37 +168,31 @@ export class Chart {
     // should this be a component?
 
     monitorGenreButtons() {
-        const cont: D3Selection = d3.select('.genres-filter-container');
-        cont.on('click', (e) => this.toggleGenreButtons(e))
+        const cont: D3Selection = d3.select(".genres-filter-container");
+        cont.on("click", (e) => this.toggleGenreButtons(e));
     }
 
     clearGenreButtons() {
 
-        d3.selectAll('.genres-filter-container img').classed('selected', false);
-        this.marks?.classed('dimmed', false);
+        d3.selectAll(".genres-filter-container img").classed("selected", false);
+        this.marks?.classed("dimmed", false);
 
     }
 
     toggleGenreButtons(e: any) {
-
         const tg = e.target;
 
-        if (tg.tagName == 'IMG') {
+        if (tg.tagName == "IMG") {
+            const button_already_selected: boolean = tg.classList.contains("selected");
 
-            const button_already_selected: boolean = tg.classList.contains('selected');
-            
             this.clearGenreButtons();
 
-            if ( !button_already_selected ) {
-
-                tg.classList.add('selected');
+            if (!button_already_selected) {
+                tg.classList.add("selected");
                 const genre: string = tg.parentNode.dataset.selectedGenre;
-                this.marks?.classed('dimmed', d => !d[genre]);
-
+                this.marks?.classed("dimmed", d => !d[genre]);
             }
-            
         }
-
     }
 
     // end of should this be a component?

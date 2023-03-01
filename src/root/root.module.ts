@@ -8,8 +8,9 @@ import {FormsModule} from "@angular/forms";
 import {BookTooltipComponent} from "../core/components/book-tooltip/book-tooltip.component";
 import {BookTooltipDetailedComponent} from "src/core/components/book-tooltip-detailed/book-tooltip-detailed.component";
 import {MatSliderModule} from "@angular/material/slider";
-import { RangeSliderComponent } from "src/core/components/range-slider/range-slider.component";
+import {RangeSliderComponent} from "src/core/components/range-slider/range-slider.component";
 import {GenreButtonComponent} from "../core/components/genre-button/genre-button.component";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import {GenreButtonComponent} from "../core/components/genre-button/genre-button
         BrowserModule,
         FormsModule,
         MatSliderModule,
+        MatTooltipModule,
     ],
     providers: [],
     bootstrap: [RootComponent]

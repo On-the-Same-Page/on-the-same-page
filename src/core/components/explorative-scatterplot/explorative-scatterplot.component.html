@@ -45,6 +45,7 @@
 
 <div class="genres-filter-container active">
     <otsp-genre-button *ngFor="let genre of GENRE_LIST"
+                       [matTooltip]="genre"
                        [genre]="genre"
                        [selected]="genreFilter === genre"
                        (genreSelected)="toggleGenre(genre)"></otsp-genre-button>

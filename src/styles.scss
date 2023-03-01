@@ -8,15 +8,16 @@ html, body {
     width: 100%;
     height: 100%;
     font-family: Arial, sans-serif;
+
+    // Fix tooltip flicker by preventing scrollbar on page.
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 :root {
     --text-color: #444;
     --bkg-color: #FAF5F0;
 }
-
-
-
 
 select {
     padding: .5em .3em;
@@ -39,7 +40,7 @@ select {
     html {
         font-size: 18px;
     }
-    
+
 }
 
 @media (min-width: 1900px) {
@@ -51,5 +52,5 @@ select {
     html {
         font-size: 20px;
     }
-    
+
 }

@@ -26,31 +26,40 @@ export class RangeSliderComponent implements OnChanges {
         if (max < this.numberMin) {
             max = this.numberMin;
         }
-
-        this.numberMax = max ?? 0;
-
-        this.maxChanged.emit(max ?? 0);
+        this.setMax(max);
     }
 
     handleMinChanged(min: number) {
         if (min > this.numberMax) {
             min = this.numberMax;
         }
+        this.setMin(min);
+    }
+
+    private setMax(max: number) {
+        this.numberMax = max ?? 0;
+        this.maxChanged.emit(max ?? 0);
+    }
+
+    private setMin(min: number) {
         this.numberMin = min ?? 0;
         this.minChanged.emit(min ?? 0);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes["lowerBound"]) {
-            this.handleMinChanged(this.lowerBound);
+        const lowChange = changes["lowerBound"];
+        const upChange = changes["upperBound"];
+
+        if (lowChange) {
+            this.setMin(this.lowerBound);
 
             if (this.numberMax < this.lowerBound) {
                 this.handleMaxChanged(this.lowerBound);
             }
         }
 
-        if (changes["upperBound"]) {
-            this.handleMaxChanged(this.upperBound);
+        if (upChange) {
+            this.setMax(this.upperBound);
 
             if (this.numberMin > this.upperBound) {
                 this.handleMinChanged(this.upperBound);

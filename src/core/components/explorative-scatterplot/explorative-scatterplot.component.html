@@ -18,6 +18,15 @@
                            [selected]="genreFilter === genre"
                            (genreSelected)="toggleGenre(genre)"></otsp-genre-button>
     </div>
+    <div class="tail-end">
+        <div class="search-input" (click)="searchInput.focus()">
+            <mat-icon>search</mat-icon>
+            <input #searchInput type="text" placeholder="Search..."
+                   [ngModel]="searchText"
+                   (ngModelChange)="changeSearchText($event)">
+            <mat-icon *ngIf="searchText" (click)="changeSearchText('')">clear</mat-icon>
+        </div>
+    </div>
 </div>
 
 <div class="main-view">

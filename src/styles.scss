@@ -24,6 +24,20 @@
     src: local("Open Sans Condensed"), local("OpenSansCondensed"), url("assets/font/OpenSans_Condensed-Bold.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Material Icons"), local("MaterialIcons-Regular"), url("assets/font/MaterialIcons.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Material Icons Outlined";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Material Icons Outlined"), local("MaterialIcons-Outlined"), url("assets/font/MaterialIcons-Outlined.woff2") format("woff2");
+}
+
 html, body {
     display: flex;
     flex-direction: column;
@@ -38,9 +52,12 @@ html, body {
     overflow: hidden;
 }
 
-select,
-.mat-mdc-tooltip, svg  text{
+select, svg text, input {
     font-family: "Open Sans Condensed", sans-serif;
+}
+
+.mat-mdc-tooltip {
+
     --mdc-plain-tooltip-supporting-text-font: "Open Sans Condensed";
 }
 
@@ -84,3 +101,42 @@ select {
     }
 
 }
+
+.material-icons {
+    user-select: none;
+    width: 24px;
+    height: 24px;
+    font-family: "Material Icons", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: "liga";
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.material-icons-outlined {
+    user-select: none;
+    width: 24px;
+    height: 24px;
+    font-family: "Material Icons Outlined", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: "liga";
+    -moz-osx-font-smoothing: grayscale;
+}
+

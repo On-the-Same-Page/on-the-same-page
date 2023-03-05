@@ -11,6 +11,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {RangeSliderComponent} from "src/core/components/range-slider/range-slider.component";
 import {GenreButtonComponent} from "../core/components/genre-button/genre-button.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
         FormsModule,
         MatSliderModule,
         MatTooltipModule,
+        MatIconModule,
     ],
     providers: [],
     bootstrap: [RootComponent]

@@ -57,6 +57,8 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
     avgRatingMax$ = new BehaviorSubject<number>(0);
     avgRatingMin$ = new BehaviorSubject<number>(0);
 
+    searchText = "";
+
     genreFilter: Nullable<Genre> = null;
 
     ngOnInit(): void {
@@ -222,5 +224,11 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
 
     changeAvgRatingMin(lowerBound: number) {
         this.avgRatingMin$.next(lowerBound);
+    }
+
+    changeSearchText(searchText: string) {
+        this.searchText = searchText;
+
+        this.chart?.highlightOnTextSearch(searchText);
     }
 }

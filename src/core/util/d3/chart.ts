@@ -173,6 +173,23 @@ export class Chart {
         this.marks?.classed("dimmed", d => !d[genre]);
     }
 
+    highlightOnTextSearch(term: string) {
+
+        term = term.trim().toLowerCase();
+
+        this.marks?.classed("searched", (d: any) => {
+
+            if (!term.length) return false;
+
+            const fields = ["title", "authors_list"];
+            const contains_term = fields
+                .map(field => d[field].toLowerCase().includes(term))
+                .reduce( (ac, cv) => ac || cv);
+            return contains_term;
+        });
+
+    };
+
     protected generateScaleParameters() {
         return {
             ranges: {

@@ -1,18 +1,18 @@
-import {Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from "@angular/core";
+import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from "@angular/core";
 import {Genre, Nullable, PositionedDataPoint, RawDataSet} from "../../interfaces";
 import {Chart} from "../../util/d3/chart";
 import {Simulation} from "../../util/d3/simulation";
 import {Axis} from "../../util/d3/axis";
 
 import * as d3 from "d3";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, debounceTime, merge} from "rxjs";
 
 @Component({
     selector: "otsp-explorative-scatterplot",
     templateUrl: "./explorative-scatterplot.component.html",
     styleUrls: ["./explorative-scatterplot.component.scss"]
 })
-export class ExplorativeScatterplotComponent implements OnChanges {
+export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
     readonly GENRE_LIST: Genre[] = Object.values(Genre);
 
     @ViewChild("mainChart", {static: true})
@@ -33,12 +33,37 @@ export class ExplorativeScatterplotComponent implements OnChanges {
     tooltipBook$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
     tooltipBookDetailed$ = new BehaviorSubject<Nullable<PositionedDataPoint>>(null);
 
-    yearMax: number = 0;
-    yearMin: number = 0;
     yearUpperBound: number = 0;
     yearLowerBound: number = 0;
 
+    ratingsCountUpperBound: number= 0;
+    ratingsCountLowerBound: number= 0;
+
+    numPagesUpperBound: number= 0;
+    numPagesLowerBound: number= 0;
+
+    avgRatingUpperBound: number= 0;
+    avgRatingLowerBound: number= 0;
+
+    yearMax$ = new BehaviorSubject<number>(0);
+    yearMin$ = new BehaviorSubject<number>(0);
+
+    ratingsCountMax$ = new BehaviorSubject<number>(0);
+    ratingsCountMin$ = new BehaviorSubject<number>(0);
+
+    numPagesMax$ = new BehaviorSubject<number>(0);
+    numPagesMin$ = new BehaviorSubject<number>(0);
+
+    avgRatingMax$ = new BehaviorSubject<number>(0);
+    avgRatingMin$ = new BehaviorSubject<number>(0);
+
     genreFilter: Nullable<Genre> = null;
+
+    ngOnInit(): void {
+        merge(this.yearMax$,this.yearMin$, this.ratingsCountMax$, this.ratingsCountMin$, this.numPagesMax$, this.numPagesMin$, this.avgRatingMax$, this.avgRatingMin$).pipe(
+            debounceTime(100)
+        ).subscribe(() => this.render());
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         // If we have changes in the data and most importantly, data present, we go on to update the rendered chart.
@@ -59,10 +84,29 @@ export class ExplorativeScatterplotComponent implements OnChanges {
 
     private calculateDataBounds() {
         const [yearLowerBound, yearUpperBound] = d3.extent(this.rawDataSet, (d: any) => d.year_publication);
-        this.yearMin = yearLowerBound as unknown as number;
-        this.yearMax = yearUpperBound as unknown as number;
         this.yearLowerBound = yearLowerBound as unknown as number;
         this.yearUpperBound = yearUpperBound as unknown as number;
+        this.yearMin$.next(yearLowerBound as unknown as number);
+        this.yearMax$.next(yearUpperBound as unknown as number);
+
+        const [ratingsCountLowerBound, ratingsCountUpperBound] = d3.extent(this.rawDataSet, (d: any) => d.ratingsCount);
+        this.ratingsCountLowerBound = ratingsCountLowerBound as unknown as number;
+        this.ratingsCountUpperBound = ratingsCountUpperBound as unknown as number;
+        this.ratingsCountMin$.next(ratingsCountLowerBound as unknown as number);
+        this.ratingsCountMax$.next(ratingsCountUpperBound as unknown as number);
+
+        const [numPagesLowerBound, numPagesUpperBound] = d3.extent(this.rawDataSet, (d: any) => d.numPages);
+        this.numPagesLowerBound = numPagesLowerBound as unknown as number;
+        this.numPagesUpperBound = numPagesUpperBound as unknown as number;
+        this.numPagesMin$.next(numPagesLowerBound as unknown as number);
+        this.numPagesMax$.next(numPagesUpperBound as unknown as number);
+
+
+        const [avgRatingLowerBound, avgRatingUpperBound] = d3.extent(this.rawDataSet, (d: any) => d.avgRating);
+        this.avgRatingLowerBound = avgRatingLowerBound as unknown as number;
+        this.avgRatingUpperBound = avgRatingUpperBound as unknown as number;
+        this.avgRatingMin$.next(avgRatingLowerBound as unknown as number);
+        this.avgRatingMax$.next(avgRatingUpperBound as unknown as number);
     }
 
     private updateChart(): void {
@@ -83,7 +127,11 @@ export class ExplorativeScatterplotComponent implements OnChanges {
             return;
         }
 
-        const filteredData = (this.rawDataSet as any[]).filter(dp => dp.year_publication >= this.yearLowerBound && dp.year_publication <= this.yearUpperBound);
+        const filteredData = (this.rawDataSet as any[])
+            .filter(dp => dp.year_publication >= this.yearMin$.value && dp.year_publication <= this.yearMax$.value)
+            .filter(dp => dp.ratingsCount >= this.ratingsCountMin$.value && dp.ratingsCount <= this.ratingsCountMax$.value)
+            .filter(dp => dp.numPages >= this.numPagesMin$.value && dp.numPages <= this.numPagesMax$.value)
+            .filter(dp => dp.avgRating >= this.avgRatingMin$.value && dp.avgRating <= this.avgRatingMax$.value);
         this.chart.updateData(filteredData);
 
         // include test to avoid setting up and updating even when the axis are unchanged?
@@ -144,13 +192,35 @@ export class ExplorativeScatterplotComponent implements OnChanges {
         this.render();
     }
 
-    changeLowerBound(lowerBound: number) {
-        this.yearLowerBound = lowerBound;
-        this.render();
+    changeYearMin(lowerBound: number) {
+        this.yearMin$.next(lowerBound);
     }
 
-    changeUpperBound(upperBound: number) {
-        this.yearUpperBound = upperBound;
-        this.render();
+    changeYearMax(upperBound: number) {
+        this.yearMax$.next(upperBound);
+    }
+
+    changeRatingsCountMin(lowerBound: number) {
+        this.ratingsCountMin$.next(lowerBound);
+    }
+
+    changeRatingsCountMax(upperBound: number) {
+        this.ratingsCountMax$.next(upperBound);
+    }
+
+    changeNumPagesMax(upperBound: number) {
+        this.numPagesMax$.next(upperBound);
+    }
+
+    changeNumPagesMin(lowerBound: number) {
+        this.numPagesMin$.next(lowerBound);
+    }
+
+    changeAvgRatingMax(upperBound: number) {
+        this.avgRatingMax$.next(upperBound);
+    }
+
+    changeAvgRatingMin(lowerBound: number) {
+        this.avgRatingMin$.next(lowerBound);
     }
 }

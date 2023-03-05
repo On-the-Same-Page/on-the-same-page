@@ -3,14 +3,14 @@
 <p class="authors">{{book?.bookData?.authors_list}}</p>
 
 <div class="variable-info">
-    <p class="values" *ngIf="xAxisVariable!='initial'">
+    <p class="values" *ngIf="xAxisVariable!=='initial'">
 
         <span>{{variableNames[xAxisVariable]}}</span>:
         <span>{{book?.bookData?.[xAxisVariable]}}</span>
 
     </p>
 
-    <p class="values" *ngIf="yAxisVariable!='initial'">
+    <p class="values" *ngIf="yAxisVariable!=='initial'">
 
 
         <span>{{variableNames[yAxisVariable]}}</span>:

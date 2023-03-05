@@ -180,9 +180,9 @@ export class Chart {
                 y: [this.h - this.margin_v, this.margin_v]
             },
             domains: {
-                numPages: [0, Math.max(...this.data.map((d: any) => d.numPages))],
+                numPages: d3.extent(this.data, (d: any) => d.numPages),//[0, Math.max(...this.data.map((d: any) => d.numPages))],
                 avgRating: [0, 5],
-                ratingsCount: [0, Math.max(...this.data.map((d: any) => d.ratingsCount))],
+                ratingsCount: d3.extent(this.data, (d: any) => d.ratingsCount),//[0, Math.max(...this.data.map((d: any) => d.ratingsCount))],
                 year_publication: d3.extent(this.data, (d: any) => d.year_publication)
             },
             variables: {

@@ -1,18 +1,37 @@
 .column{
     flex-direction: column;
-    display: flex; 
+    display: flex;
 }
 
 .row{
-    input{
-        width: 50px;
-        
+    > input{
+        width: 60px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid black;
+        font-weight: 600;
     }
     flex-direction: row;
     justify-content: space-between;
     display: flex;
 }
 
+::ng-deep {
+    .mat-mdc-slider.mat-primary {
+        --mdc-slider-handle-color: var(--otsp-range-slider-color);
+        --mdc-slider-focus-handle-color: var(--otsp-range-slider-color);
+        --mdc-slider-hover-handle-color: var(--otsp-range-slider-color);
+        --mdc-slider-active-track-color: var(--otsp-range-slider-color);
+        --mdc-slider-inactive-track-color: var(--otsp-range-slider-color);
+        --mdc-slider-with-tick-marks-inactive-container-color: var(--otsp-range-slider-color);
+        --mat-mdc-slider-ripple-color: var(--otsp-range-slider-color);
+        --mat-mdc-slider-focus-ripple-color: transparent;
+        --mat-mdc-slider-hover-ripple-color: transparent;
+    }
+}
+
 :host{
     width: 300px;
+    --otsp-range-slider-color: #A2D2FF;
 }

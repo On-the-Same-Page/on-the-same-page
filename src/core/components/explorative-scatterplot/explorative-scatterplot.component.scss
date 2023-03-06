@@ -184,7 +184,10 @@ h1.no-show {
     }
 
     &.searched {
+        stroke-width: 5;
+        stroke: #00c267;
         fill: #00c267;
+        opacity: 1;
     }
 
     &:not(.dimmed) {

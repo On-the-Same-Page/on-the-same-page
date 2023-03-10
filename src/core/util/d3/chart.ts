@@ -10,7 +10,7 @@ export class Chart {
     h: number;
     r: number = 4;
 
-    margin_l: number = 100;
+    margin_l: number = 80;
     margin_r: number = 20;
     margin_v: number = 20;
 

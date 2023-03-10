@@ -30,7 +30,25 @@
 </div>
 
 <div class="main-view">
-    <svg #mainChart></svg>
+    <div class="wrapper-vis-and-controls-bottom">
+        <svg #mainChart></svg>
+
+        <div class="bottom controls">
+            <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">
+                <span>Use the force!</span>
+                <img class="force-icon" src="assets/img/force.png">
+            </div>
+            <select [ngModel]="xAxisVariable" (ngModelChange)="xAxisVariableChanged($event)" >
+                <option value="initial" disabled="">Select a variable for the X axis!</option>
+                <option value="numPages">Number of pages</option>
+                <option value="avgRating">Average rating</option>
+                <option value="ratingsCount">Number of ratings</option>
+                <option value="year_publication">Publication year</option>
+            </select>
+        </div>
+
+    </div>
+
     <div class="sidebar">
         <div class="sidebar-filter">
 
@@ -87,20 +105,6 @@
 
          </otsp-range-slider> -->
     </div>
-</div>
-
-<div class="bottom controls">
-    <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">
-        <span>Use the force!</span>
-        <img class="force-icon" src="assets/img/force.png">
-    </div>
-    <select [ngModel]="xAxisVariable" (ngModelChange)="xAxisVariableChanged($event)" >
-        <option value="initial" disabled="">Select a variable for the X axis!</option>
-        <option value="numPages">Number of pages</option>
-        <option value="avgRating">Average rating</option>
-        <option value="ratingsCount">Number of ratings</option>
-        <option value="year_publication">Publication year</option>
-    </select>
 </div>
 
 <div *ngIf="tooltipBookDetailed$ | async" class="overlay" (click)="tooltipBookDetailed$.next(null)">

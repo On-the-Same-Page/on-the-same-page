@@ -44,6 +44,7 @@
 svg {
     display: block;
     width: 100%;
+    height: 100%;
     flex-grow: 1;
     background-color: var(--bkg-color);
 }
@@ -63,6 +64,14 @@ h1 {
 
 h1.no-show {
     opacity: 0;
+}
+
+.wrapper-vis-and-controls-bottom {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -157,8 +166,9 @@ h1.no-show {
     &.bottom {
         padding-top: 20px;
         padding-bottom: 20px;
-        padding-right: calc(var(--margin-right) + var(--sidebar-width));
+        padding-right: var(--margin-right);
         justify-content: space-between;
+        flex-grow: 0;
 
         > .force-button {
             font-size: var(--controls-font-size); 

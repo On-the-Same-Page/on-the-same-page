@@ -35,7 +35,7 @@
 
         <div class="bottom controls">
             <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">
-                <span>Use the force!</span>
+                <span>Too many points overlapping? Use the force!</span>
                 <img class="force-icon" src="assets/img/force.png">
             </div>
             <select [ngModel]="xAxisVariable" (ngModelChange)="xAxisVariableChanged($event)" >

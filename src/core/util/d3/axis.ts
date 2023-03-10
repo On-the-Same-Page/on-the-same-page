@@ -33,7 +33,7 @@ export class Axis {
         this.el_y = chart.svg.append("g")
             .classed("axis", true)
             .classed("axis-y", true)
-            .attr("transform", `translate(${chart.margin}, 0)`)
+            .attr("transform", `translate(${chart.margin_l}, 0)`)
             .call(this.axes.y as D3Axis);
     }
 

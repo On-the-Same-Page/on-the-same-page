@@ -10,7 +10,8 @@ export class Chart {
     h: number;
     r: number = 4;
 
-    margin: number = 100;
+    margin_l: number = 100;
+    margin_r: number = 20;
     margin_v: number = 20;
 
     grid_x0: number = 0;
@@ -40,7 +41,8 @@ export class Chart {
 
         if (window.innerWidth > 1600) {
             this.r = 5;
-            this.margin = 150;
+            this.margin_l = 150;
+            this.margin_r = 50;
             this.margin_v = 50;
         }
 
@@ -193,7 +195,7 @@ export class Chart {
     protected generateScaleParameters() {
         return {
             ranges: {
-                x: [this.margin, this.w - this.margin],
+                x: [this.margin_l, this.w - this.margin_r],
                 y: [this.h - this.margin_v, this.margin_v]
             },
             domains: {

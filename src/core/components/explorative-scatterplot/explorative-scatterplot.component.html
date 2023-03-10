@@ -1,6 +1,6 @@
+<h1 class="no-show">On the Same Page</h1>
 <div class="top controls">
     <div class="main-content-wrapper">
-        <h1 class="no-show">On the Same Page</h1>
         <div class="main-content">
             <select [ngModel]="yAxisVariable" (ngModelChange)="yAxisVariableChanged($event)">
                 <option value="initial" disabled="">Select a variable for the Y axis!</option>
@@ -11,7 +11,7 @@
             </select>
         </div>
     </div>
-    <div class="center-content">
+    <div class="genre-buttons-container">
         <otsp-genre-button *ngFor="let genre of GENRE_LIST"
                            [matTooltip]="genre"
                            [genre]="genre"

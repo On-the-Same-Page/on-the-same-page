@@ -38,6 +38,10 @@
     src: local("Material Icons Outlined"), local("MaterialIcons-Outlined"), url("assets/font/MaterialIcons-Outlined.woff2") format("woff2");
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     display: flex;
     flex-direction: column;
@@ -64,21 +68,19 @@ select, svg text, input {
 :root {
     --text-color: #444;
     --bkg-color: #FAF5F0;
-}
-
-select {
-    padding: .5em .3em;
-    border-radius: 5px;
-    background-color: transparent;
-    border: 2px solid black;
-    height: 35px;
+    --margin-left: 100px;
+    --margin-vertical: 20px;
+    --margin-right: 20px;
+    --sidebar-width: 300px;
+    --button-height: 2.5rem;
+    --controls-font-size: 1em;
 }
 
 .tick text {
     font-size: 12px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
 
     .tick text {
         font-size: 14px;

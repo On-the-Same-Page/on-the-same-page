@@ -1,7 +1,7 @@
 :host {
     display: flex;
     flex-direction: column;
-    width: 90px;
+    /*width: 90px;*/
 
     cursor: pointer;
     -webkit-user-drag: none;
@@ -15,6 +15,7 @@
 
 img {
     display: block;
-    width: 100%;
+    /*width: 100%;*/
+    height: var(--button-height);
     -webkit-user-drag: none;
 }

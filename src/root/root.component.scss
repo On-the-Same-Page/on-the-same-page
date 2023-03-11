@@ -5,3 +5,50 @@
     width: 100%;
     background-color: var(--bkg-color)
 }
+
+.animation {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bkg-color);
+
+    &.hidden {
+        display: none;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+}
+
+.start-button-wrapper {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    .start-button {
+        user-select: none;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.skip-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: white;
+    user-select: none;
+}

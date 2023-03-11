@@ -1,2 +1,13 @@
-<otsp-explorative-scatterplot [rawDataSet]="rawDataSet">
+<otsp-explorative-scatterplot *ngIf="!displayAnimation" [rawDataSet]="rawDataSet">
 </otsp-explorative-scatterplot>
+<div class="animation" [class.hidden]="!displayAnimation">
+    <video #vid muted preload="auto" (ended)="hideAnimation()">
+    </video>
+</div>
+<div *ngIf="displayStartButton"  class="start-button-wrapper">
+    <div class="start-button" (click)="displayStartButton = false; vid.play()">
+        Start
+    </div>
+</div>
+
+<div *ngIf="!displayStartButton && displayAnimation" class="skip-button" (click)="hideAnimation()">>> Skip</div>

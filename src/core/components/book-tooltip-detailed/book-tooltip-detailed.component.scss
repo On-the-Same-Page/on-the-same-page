@@ -43,10 +43,6 @@ p {
     margin: 0;
 }
 
-p.goodreads-link {
-    margin-top: .5em;
-}
-
 p.values {
     margin-bottom: .5em;
 }
@@ -55,7 +51,7 @@ span.variable-info-name {
     font-weight: bold;
 }
 
-.love-books > * {
+.love-books > img {
     display: block;
     width: 30%;
     margin: 0 auto;
@@ -64,7 +60,8 @@ span.variable-info-name {
 .love-books > p {
     text-align: center;
     font-size: .8em;
-    margin-top: -20px;
+    margin: 0 auto;
+    margin-top: -10px;
 }
 
 .variable-info {
@@ -81,4 +78,23 @@ span.variable-info-name {
 
 .values, p.goodreads-link {
     font-size: .9em;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.close-modal:hover {
+    border-color: currentColor;
+    transform: rotate(1turn);
 }

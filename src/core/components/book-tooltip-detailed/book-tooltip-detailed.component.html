@@ -1,3 +1,5 @@
+<button class="close-modal">&#x2715;<span class="visually-hidden">Close</span></button>
+
 <p class="title">{{book?.bookData?.title}}</p>
 <p class="authors">{{book?.bookData?.single_author}}</p>
 
@@ -26,8 +28,6 @@
             <span class="variable-info-name">Genres</span>: <span>{{book?.bookData?.['genres_list']}}</span>
         </p>
 
-        <p class="goodreads-link">More on <a target="_blank" rel="noopener noreferrer" [href]="book?.bookData?.url">Goodreads</a>!</p>
-
     </div>
 
 </div>
@@ -36,5 +36,5 @@
 
 <div class="love-books">
     <img class="icon-love-books" src="assets/img/love-books.png" alt="A beautiful drawing of an open book with a heart on top of its pages!">
-    <p>Add to your favorites!</p>
+    <p class="goodreads-link">More on <a target="_blank" rel="noopener noreferrer" [href]="book?.bookData?.url">Goodreads</a>!</p>
 </div>

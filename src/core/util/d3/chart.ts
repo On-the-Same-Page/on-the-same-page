@@ -61,8 +61,8 @@ export class Chart {
 
     prepare_grid() {
 
-        this.grid_ni = Math.max(...this.data.map((d: any) => d.pos_i)) + 1;
-        this.grid_nj = Math.max(...this.data.map((d: any) => d.pos_j)) + 1;
+        this.grid_ni = Math.max(...this.data.map((d: any) => d.pos1_i)) + 1;
+        this.grid_nj = Math.max(...this.data.map((d: any) => d.pos2_j)) + 1;
 
         this.grid_x0 = (this.w - this.grid_ni * 2 * this.r) / 2;
         this.grid_y0 = (this.h - this.grid_nj * 2 * this.r) / 2;
@@ -114,8 +114,19 @@ export class Chart {
             ?.transition()
             .duration(2000)
             ?.attr("transform", (d: any) => {
-                d.x = this.grid_x0 + this.r * (1 + 2 * d.pos_i);
-                d.y = this.grid_y0 + this.r * (1 + 2 * d.pos_j);
+                d.x = this.grid_x0 + this.r * (1 + 2 * d.pos1_i);
+                d.y = this.grid_y0 + this.r * (1 + 2 * d.pos1_j);
+                return `translate(${d.x}, ${d.y})`;
+            })
+        ;
+
+        this.marks
+            ?.transition()
+            .delay(3000)
+            .duration(2000)
+            ?.attr("transform", (d: any) => {
+                d.x = this.grid_x0 + this.r * (1 + 2 * d.pos2_i);
+                d.y = this.grid_y0 + this.r * (1 + 2 * d.pos2_j);
                 return `translate(${d.x}, ${d.y})`;
             })
         ;
@@ -123,7 +134,7 @@ export class Chart {
         setTimeout(
             () => {
                 this.marks?.classed("no-force", true);
-            }, 2500
+            }, 5000
         );
 
     }

@@ -94,8 +94,15 @@ h1.no-show {
         padding: .1em .3em;
         border-radius: 5px;
         background-color: transparent;
-        border: 2px solid black;
+        border: 2px solid currentColor;
         height: var(--button-height);
+
+        &.click-me {
+
+            border-color: var(--highlight-color);
+            animation: box-shadow-blink 2s infinite;
+
+        }
     }
 
     &.top {
@@ -195,7 +202,7 @@ h1.no-show {
             transition: opacity .5s;
 
             &.active {
-                box-shadow: 0 0 20px 5px gold;
+                box-shadow: 0 0 20px 5px var(--highlight-color);
             }
 
             > span {
@@ -304,4 +311,22 @@ h1.no-show {
     cursor: pointer;
     background-color: white; /*transparent;
     backdrop-filter: blur(5px); */
+}
+
+@keyframes box-shadow-blink {
+
+    0% {
+        box-shadow: 0 0 5px 0px var(--highlight-color);
+    }
+
+    50% {
+            
+        box-shadow: 0 0 5px 5px var(--highlight-color);
+
+    }
+
+    100% {
+        box-shadow: 0 0 5px 0px var(--highlight-color);
+    }
+
 }

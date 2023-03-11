@@ -134,6 +134,7 @@ export class Chart {
         setTimeout(
             () => {
                 this.marks?.classed("no-force", true);
+                d3.selectAll('select').classed('click-me', true);
             }, 5000
         );
 

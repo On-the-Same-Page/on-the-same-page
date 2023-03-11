@@ -182,11 +182,13 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
     }
 
     public yAxisVariableChanged(newValue: string) {
+        if(this.never_rendered) document.querySelector('.top select')?.classList.remove('click-me');
         this.yAxisVariable = newValue;
         this.render();
     }
 
     public xAxisVariableChanged(newValue: string) {
+        if(this.never_rendered) document.querySelector('.bottom select')?.classList.remove('click-me');
         this.xAxisVariable = newValue;
         this.render();
     }

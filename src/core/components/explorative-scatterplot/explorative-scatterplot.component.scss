@@ -67,6 +67,29 @@ h1.no-show {
     opacity: 0;
 }
 
+.title-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    > .menu {
+        display: flex;
+        flex-direction: row;
+        margin-right: 80px;
+
+        > .menu-item {
+            font-weight: bold;
+            user-select: none;
+            cursor: pointer;
+            &:not(:last-child) {
+                margin-right: 40px;
+            }
+        }
+    }
+}
+
 .mostly-no-show {
     opacity: .1;
     pointer-events: none;
@@ -184,7 +207,7 @@ h1.no-show {
         flex-grow: 0;
 
         > .force-button {
-            font-size: var(--controls-font-size); 
+            font-size: var(--controls-font-size);
             border: 2px solid currentColor;
             border-radius: 5px;
             padding: 0.4em 0.6em;
@@ -320,7 +343,7 @@ h1.no-show {
     }
 
     50% {
-            
+
         box-shadow: 0 0 5px 5px var(--highlight-color);
 
     }

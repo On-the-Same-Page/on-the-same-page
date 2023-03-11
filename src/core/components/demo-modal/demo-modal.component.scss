@@ -1,0 +1,12 @@
+
+:host {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    background-color: var(--bkg-color);
+    padding: 35px 25px 25px 35px;
+    border: 9px solid black;
+}

@@ -12,6 +12,9 @@ import {RangeSliderComponent} from "src/core/components/range-slider/range-slide
 import {GenreButtonComponent} from "../core/components/genre-button/genre-button.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatIconModule} from "@angular/material/icon";
+import {AuthorsModalComponent} from "../core/components/authors-modal/authors-modal.component";
+import {AboutModalComponent} from "../core/components/about-modal/about-modal.component";
+import {DemoModalComponent} from "../core/components/demo-modal/demo-modal.component";
 
 @NgModule({
     declarations: [
@@ -21,6 +24,9 @@ import {MatIconModule} from "@angular/material/icon";
         BookTooltipDetailedComponent,
         RangeSliderComponent,
         GenreButtonComponent,
+        AuthorsModalComponent,
+        AboutModalComponent,
+        DemoModalComponent,
     ],
     imports: [
         BrowserModule,

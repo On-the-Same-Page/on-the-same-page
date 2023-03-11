@@ -1,0 +1,20 @@
+<div class="authors-row">
+    <div class="author" *ngFor="let author of AUTHORS_DATA">
+        <div class="name">{{author.name}}</div>
+        <div class="email">{{author.email}}</div>
+        <div class="work">
+            <div class="work-title">Work distribution:</div>
+            <ul class="work-list">
+                <li class="work-item" *ngFor="let workItem of author.work">{{workItem}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="authors-row">
+    <div class="author" *ngFor="let author of AUTHORS_DATA">
+        <div class="favorite-book">
+            <div class="favorite-book-title">Favorite book:</div>
+            <div class="favorite-book-content">"{{author.book}}"</div>
+        </div>
+    </div>
+</div>

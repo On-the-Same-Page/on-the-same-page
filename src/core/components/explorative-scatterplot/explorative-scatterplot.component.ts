@@ -61,6 +61,10 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
 
     genreFilter: Nullable<Genre> = null;
 
+    authorsShown: boolean = false;
+    aboutShown: boolean = false;
+    demoShown: boolean = false;
+
     ngOnInit(): void {
         merge(this.yearMax$,this.yearMin$, this.ratingsCountMax$, this.ratingsCountMin$, this.numPagesMax$, this.numPagesMin$, this.avgRatingMax$, this.avgRatingMin$).pipe(
             debounceTime(100)
@@ -73,6 +77,13 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
             this.calculateDataBounds();
             this.updateChart();
         }
+    }
+
+    clearModals() {
+        this.tooltipBookDetailed$.next(null);
+        this.authorsShown = false;
+        this.aboutShown = false;
+        this.demoShown = false;
     }
 
     public toggleGenre(genre: Genre) {
@@ -182,13 +193,13 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
     }
 
     public yAxisVariableChanged(newValue: string) {
-        if(this.never_rendered) document.querySelector('.top select')?.classList.remove('click-me');
+        if(this.never_rendered) document.querySelector(".top select")?.classList.remove("click-me");
         this.yAxisVariable = newValue;
         this.render();
     }
 
     public xAxisVariableChanged(newValue: string) {
-        if(this.never_rendered) document.querySelector('.bottom select')?.classList.remove('click-me');
+        if(this.never_rendered) document.querySelector(".bottom select")?.classList.remove("click-me");
         this.xAxisVariable = newValue;
         this.render();
     }

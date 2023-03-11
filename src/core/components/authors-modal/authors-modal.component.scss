@@ -1,0 +1,33 @@
+
+:host {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    background-color: var(--bkg-color);
+    padding: 35px 25px 25px 35px;
+    border: 9px solid black;
+}
+
+.author {
+    flex: 1;
+}
+
+.work {
+    margin-top: 20px;
+}
+
+.authors-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.favorite-book-content {
+    white-space: break-spaces;
+    line-break: normal;
+}

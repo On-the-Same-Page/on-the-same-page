@@ -1,4 +1,11 @@
-<h1 class="no-show">On the Same Page</h1>
+<div class="title-row">
+    <h1 class="no-show">On the Same Page</h1>
+    <div class="menu">
+        <div class="menu-item" (click)="aboutShown = true">About</div>
+        <div class="menu-item" (click)="authorsShown = true">Authors</div>
+        <div class="menu-item" (click)="demoShown = true">Demo</div>
+    </div>
+</div>
 <div class="top controls">
     <div class="main-content-wrapper">
         <div class="main-content">
@@ -107,7 +114,8 @@
     </div>
 </div>
 
-<div *ngIf="tooltipBookDetailed$ | async" class="overlay" (click)="tooltipBookDetailed$.next(null)">
+<div *ngIf="(tooltipBookDetailed$ | async) || authorsShown || aboutShown || demoShown"
+     class="overlay" (click)="clearModals()">
 </div>
 
 <otsp-book-tooltip *ngIf="tooltipBook$ | async"
@@ -121,3 +129,11 @@
     [xAxisVariable]="xAxisVariable"
     [yAxisVariable]="yAxisVariable">
 </otsp-book-tooltip-detailed>
+
+<otsp-authors-modal *ngIf="authorsShown">
+</otsp-authors-modal>
+
+<otsp-about-modal *ngIf="aboutShown">
+</otsp-about-modal>
+
+<otsp-demo-modal *ngIf="demoShown"></otsp-demo-modal>

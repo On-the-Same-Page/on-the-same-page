@@ -34,7 +34,7 @@
         <svg #mainChart></svg>
 
         <div class="bottom controls">
-            <div class="force-button" [class.active]="forceEnabled" (click)="toggleForce()">
+            <div class="force-button mostly-no-show" [class.active]="forceEnabled" (click)="toggleForce()">
                 <span>Too many points overlapping? Use the force!</span>
                 <img class="force-icon" src="assets/img/force.png">
             </div>
@@ -49,7 +49,7 @@
 
     </div>
 
-    <div class="sidebar">
+    <div class="sidebar mostly-no-show">
         <div class="sidebar-filter">
 
             <p class="sidebar-filter-title">Publication year</p>

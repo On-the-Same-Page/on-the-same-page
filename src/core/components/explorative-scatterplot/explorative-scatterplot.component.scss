@@ -14,9 +14,10 @@
 
 .sidebar {
     --side-margin: 1em;
-    width: 300px;
+    width: var(--sidebar-width);
     flex-shrink: 0;
     background-color: var(--bkg-color);
+    transition: opacity .5s;
     > .sidebar-filter {
         /*display: flex;
         flex-direction: row;
@@ -64,6 +65,11 @@ h1 {
 
 h1.no-show {
     opacity: 0;
+}
+
+.mostly-no-show {
+    opacity: .1;
+    pointer-events: none;
 }
 
 .wrapper-vis-and-controls-bottom {
@@ -185,6 +191,8 @@ h1.no-show {
             align-items: center;
             transform-origin: center center;
             cursor: pointer;
+
+            transition: opacity .5s;
 
             &.active {
                 box-shadow: 0 0 20px 5px gold;

@@ -9,7 +9,7 @@
 <div class="top controls">
     <div class="main-content-wrapper">
         <div class="main-content">
-            <select [ngModel]="yAxisVariable" (ngModelChange)="yAxisVariableChanged($event)">
+            <select class="mostly-no-show" [ngModel]="yAxisVariable" (ngModelChange)="yAxisVariableChanged($event)">
                 <option value="initial" disabled="">Select a variable for the Y axis!</option>
                 <option value="numPages">Number of pages</option>
                 <option value="avgRating">Average rating</option>
@@ -18,7 +18,7 @@
             </select>
         </div>
     </div>
-    <div class="genre-buttons-container">
+    <div class="genre-buttons-container mostly-no-show">
         <otsp-genre-button *ngFor="let genre of GENRE_LIST"
                            [matTooltip]="genre"
                            [genre]="genre"
@@ -26,7 +26,7 @@
                            (genreSelected)="toggleGenre(genre)"></otsp-genre-button>
     </div>
     <div class="tail-end">
-        <div class="search-input" (click)="searchInput.focus()">
+        <div class="search-input mostly-no-show" (click)="searchInput.focus()">
             <mat-icon>search</mat-icon>
             <input #searchInput type="text" placeholder="Search..."
                    [ngModel]="searchText"
@@ -45,7 +45,7 @@
                 <span>Too many points overlapping? Use the force!</span>
                 <img class="force-icon" src="assets/img/force.png">
             </div>
-            <select [ngModel]="xAxisVariable" (ngModelChange)="xAxisVariableChanged($event)" >
+            <select class="mostly-no-show" [ngModel]="xAxisVariable" (ngModelChange)="xAxisVariableChanged($event)" >
                 <option value="initial" disabled="">Select a variable for the X axis!</option>
                 <option value="numPages">Number of pages</option>
                 <option value="avgRating">Average rating</option>

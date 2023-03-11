@@ -257,6 +257,10 @@ h1.no-show {
     opacity: .7;
     transition: stroke .3s, fill .3s, opacity .3s;
 
+    &.during-animation {
+        opacity: 1;
+    }
+
     &.dimmed {
         opacity: .1;
         pointer-events: none;

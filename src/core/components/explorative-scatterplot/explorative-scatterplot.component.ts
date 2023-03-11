@@ -156,6 +156,7 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
             document.querySelector("h1")?.classList.remove("no-show");
             document.querySelector(".force-button")?.classList.remove("mostly-no-show");
             document.querySelector(".sidebar")?.classList.remove("mostly-no-show");
+            this.chart.marks?.classed("during-animation", false)
             this.never_rendered = false;
         }
 

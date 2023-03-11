@@ -78,6 +78,7 @@ export class Chart {
             .join("circle")
             .classed("book", true)
             .classed("no-force", true)
+            .classed("during-animation", true)
             .attr("cx", 0)
             .attr("cy", 0)
             .attr("r", this.r)
@@ -134,7 +135,12 @@ export class Chart {
         setTimeout(
             () => {
                 this.marks?.classed("no-force", true);
-                d3.selectAll('select').classed('click-me', true);
+                d3.selectAll('select')
+                    .classed('mostly-no-show', false)
+                    .classed('click-me', true)
+                ;
+                d3.select('.search-input, .genre-buttons-container').classed('mostly-no-show', false);
+
             }, 5000
         );
 

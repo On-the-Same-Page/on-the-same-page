@@ -11,8 +11,8 @@ export class Chart {
     r: number = 4;
 
     margin_l: number = 80;
-    margin_r: number = 20;
-    margin_v: number = 20;
+    margin_r: number = 40;
+    margin_v: number = 40;
 
     grid_x0: number = 0;
     grid_y0: number = 0;
@@ -42,8 +42,8 @@ export class Chart {
         if (window.innerWidth > 1600) {
             this.r = 5;
             this.margin_l = 150;
-            this.margin_r = 50;
-            this.margin_v = 50;
+            this.margin_r = 60;
+            this.margin_v = 60;
         }
 
         this.prepare_grid();
@@ -123,7 +123,7 @@ export class Chart {
 
         this.marks
             ?.transition()
-            .delay(3000)
+            .delay(4000)
             .duration(2000)
             ?.attr("transform", (d: any) => {
                 d.x = this.grid_x0 + this.r * (1 + 2 * d.pos2_i);
@@ -139,9 +139,9 @@ export class Chart {
                     .classed('mostly-no-show', false)
                     .classed('click-me', true)
                 ;
-                d3.select('.search-input, .genre-buttons-container').classed('mostly-no-show', false);
+                d3.selectAll('.search-input, .genre-buttons-container').classed('mostly-no-show', false);
 
-            }, 5000
+            }, 6000
         );
 
     }

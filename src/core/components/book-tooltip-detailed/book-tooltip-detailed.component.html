@@ -32,7 +32,17 @@
 
 </div>
 
+<div class="awards-wrapper">
+    <span class="award-tag" *ngIf="book?.bookData?.['Pulitzer']">Pulitzer Prize</span>
+    <span class="award-tag" *ngIf="book?.bookData?.['Booker']">Booker Prize</span>
+    <span class="award-tag" *ngIf="book?.bookData?.['National Book Award']">National Book Award</span>
+    <span class="award-tag" *ngIf="book?.bookData?.['Hugo']">Hugo Award</span>
+    <span class="award-tag" *ngIf="book?.bookData?.['Nebula']">Nebula Award</span>
+</div>
 
+<div class="short-description">
+    <p><strong>Short description:</strong> {{book?.bookData?.['description'].slice(0,200) + '...'}}</p>
+</div>
 
 <div class="love-books">
     <img class="icon-love-books" src="assets/img/love-books.png" alt="A beautiful drawing of an open book with a heart on top of its pages!">

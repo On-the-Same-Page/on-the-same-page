@@ -5,7 +5,7 @@
     top: 50vh;
     transform: translate(-50%, -50%);
 
-    width: 350px;
+    width: 400px;
     overflow: hidden;
     text-overflow: ellipsis;
 
@@ -97,4 +97,33 @@ span.variable-info-name {
 .close-modal:hover {
     border-color: currentColor;
     transform: rotate(1turn);
+}
+
+.awards-wrapper {
+    margin: 1em 0;
+}
+
+.award-tag {
+    margin-top: .5em;
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--highlight-color);
+    border-radius: 5px;
+    padding-right: .3em;
+
+}
+
+.award-tag + .award-tag {
+    margin-left: 1em;
+}
+
+.award-tag::before {
+    background-image: url(/assets/img/trophy.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    content: "";
 }

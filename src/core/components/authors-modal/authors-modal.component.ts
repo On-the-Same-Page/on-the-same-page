@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Output, EventEmitter} from "@angular/core";
 
 @Component({
     selector: "otsp-authors-modal",
@@ -6,6 +6,9 @@ import {Component} from "@angular/core";
     styleUrls: ["./authors-modal.component.scss"]
 })
 export class AuthorsModalComponent {
+
+    @Output() closeRequested = new EventEmitter<void>();
+    
     readonly AUTHORS_DATA = [{
         name: "Maria Zelenika",
         email: "zelenika@kth.se",

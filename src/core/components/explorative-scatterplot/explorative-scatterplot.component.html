@@ -130,10 +130,10 @@
     [yAxisVariable]="yAxisVariable">
 </otsp-book-tooltip-detailed>
 
-<otsp-authors-modal *ngIf="authorsShown">
+<otsp-authors-modal *ngIf="authorsShown" (closeRequested)="clearModals()">
 </otsp-authors-modal>
 
-<otsp-about-modal *ngIf="aboutShown">
+<otsp-about-modal *ngIf="aboutShown" (closeRequested)="clearModals()">
 </otsp-about-modal>
 
-<otsp-demo-modal *ngIf="demoShown"></otsp-demo-modal>
+<otsp-demo-modal *ngIf="demoShown" (closeRequested)="clearModals()"></otsp-demo-modal>

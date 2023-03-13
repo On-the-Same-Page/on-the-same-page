@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Output, EventEmitter} from "@angular/core";
 
 @Component({
     selector: "otsp-about-modal",
@@ -6,5 +6,7 @@ import {Component} from "@angular/core";
     styleUrls: ["./about-modal.component.scss"]
 })
 export class AboutModalComponent {
+
+    @Output() closeRequested = new EventEmitter<void>();
 
 }

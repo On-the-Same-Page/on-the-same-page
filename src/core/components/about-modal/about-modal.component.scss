@@ -10,12 +10,15 @@
     background-color: var(--bkg-color);
     padding: 35px 25px 25px 35px;
     border: 9px solid black;
-    font-weight: bold;
+}
+
+p {
+    margin: .5em 0;
 }
 
 .section {
     &:not(:last-child) {
-        margin-bottom: 40px;
+        margin-bottom: 1.5em;
     }
 
     .section-title {

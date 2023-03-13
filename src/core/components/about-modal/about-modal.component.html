@@ -1,19 +1,24 @@
 <div class="section">
     <div class="section-title">About:</div>
     <div class="section-text">
-        We love reading books. In today’s age, many have difficulties finding the right one to get lost in - having too many options can make it hard to make a satisfactory choice. On the Same Page visualizes hundreds of books using a filterable scatterplot and provides detailed information to assist you in your search for the next read! Have fun exploring On the Same Page and maybe you will find your next favorite somewhere in the plot?
+        <p>We love reading books. In today’s age, many have difficulties finding the right one to get lost in - having too many options can make it hard to make a satisfactory choice. On the Same Page visualizes hundreds of books using a filterable scatterplot and provides detailed information to assist you in your search for the next read! Have fun exploring On the Same Page and maybe you will find your next favorite somewhere in the plot?</p>
     </div>
 </div>
 <div class="section">
     <div class="section-title">Data:</div>
     <div class="section-text">
-        The data was scraped from the website goodreads.com (https://www.goodreads.com/list/show/1.Best_Books_Ever) using this scraper: https://github.com/havanagrawal/GoodreadsScraper.
-        It contains about a 1000 books. We did some data cleaning to come up with the final dataset. The data was last updated on March 12, 2023.
+        <p>
+            The data was obtained from <a href="https://www.goodreads.com" target="_blank" rel="noopener noreferrer">Goodreads website</a>. Goodreads has a database with dozens of millions of books, so we decided to use a list of <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever" target="_blank" rel="noopener noreferrer">"the best books ever"</a>, according to the general Goodreads community. We then scraped the top one thousand books from the list, using <a href="https://github.com/havanagrawal/GoodreadsScraper" target="_blank" rel="noopener noreferrer">this scraper</a>.
+        </p>
+
+        <p>
+            We needed some information that was beyond the scope of the scraper, so we coded additional scraping scripts to get those (such as book covers, publication year, a better list of authors etc.). Data was then cleaned, wrangled and shaped to best fit our visualization needs. All that was done with <a href="https://cran.r-project.org/">R</a>, as well as exploratory data analysis and visualizations prototyping. All code related to these activities are available at our <a href="https://github.com/On-the-Same-Page/data-prep" target="_blank" rel="noopener noreferrer">data-prep repository</a>. The data was last updated on March 12, 2023.
+        </p>
     </div>
 </div>
 <div class="section">
     <div class="section-title">Methods:</div>
     <div class="section-text">
-        On the Same Page is built using Angular and D3.js. For further information, check our repository on GitHub (https://github.com/On-the-Same-Page/on-the-same-page.git).
+        <p>On the Same Page is built using Angular and D3.js. For further information, check <a href="https://github.com/On-the-Same-Page/on-the-same-page.git" target="_blank" rel="noopener noreferrer">our repository on GitHub</a>.</p>
     </div>
 </div>

@@ -20,7 +20,7 @@ export class AuthorsModalComponent {
         name: "Tiago M B Pereira",
         email: "tiagombp@kth.se",
         work: ["Data handling & processing", "Frontend development", "User test"],
-        book: ""
+        book: "Jonathan Strange & Mr. Norrell"
     }, {
         name: "Rurik Högberg",
         email: "rurikho@kth.se",
@@ -30,6 +30,6 @@ export class AuthorsModalComponent {
         name: "Wanqing Zhou",
         email: "wanqingz@kth.se",
         work: ["Data handling & processing", "Art", "UI / UX design"],
-        book: ""
+        book: "The Romance of the Three Kingdoms"
     }];
 }

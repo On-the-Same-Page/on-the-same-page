@@ -147,6 +147,8 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
             .filter(dp => dp.avgRating >= this.avgRatingMin$.value && dp.avgRating <= this.avgRatingMax$.value);
         this.chart.updateData(filteredData);
 
+        this.chart?.highlightOnTextSearch(this.searchText);
+
         // include test to avoid setting up and updating even when the axis are unchanged?
         this.chart.scales.set(this.chart, this.xAxisVariable, "x");
         this.chart.scales.set(this.chart, this.yAxisVariable, "y");

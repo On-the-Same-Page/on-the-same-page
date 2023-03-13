@@ -41,6 +41,19 @@
         user-select: none;
         color: white;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: border-color .3s;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        padding: 1em;
+        aspect-ratio: 1;
+
+    }
+
+    .start-button:hover {
+        border: 2px solid white;
     }
 }
 
@@ -51,4 +64,11 @@
     cursor: pointer;
     color: white;
     user-select: none;
+}
+
+.book-play-button {
+
+    display: inline-block;
+    width: 100px;
+
 }

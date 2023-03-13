@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from "@angular/core";
+import {Component, HostBinding, Input, Output, EventEmitter} from "@angular/core";
 import { variable_names } from "src/core/util/dictionaries";
 import {Nullable, PositionedDataPoint} from "../../interfaces";
 
@@ -12,6 +12,8 @@ export class BookTooltipDetailedComponent {
 
     @Input() xAxisVariable!: string;
     @Input() yAxisVariable!: string;
+
+    @Output() closeRequested = new EventEmitter<void>();
 
     /*
     @HostBinding("style.top.px")

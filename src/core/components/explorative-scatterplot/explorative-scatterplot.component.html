@@ -124,7 +124,7 @@
     [yAxisVariable]="yAxisVariable">
 </otsp-book-tooltip>
 
-<otsp-book-tooltip-detailed *ngIf="tooltipBookDetailed$ | async"
+<otsp-book-tooltip-detailed *ngIf="tooltipBookDetailed$ | async" (closeRequested)="clearModals()"
     [book]="tooltipBookDetailed$ | async"
     [xAxisVariable]="xAxisVariable"
     [yAxisVariable]="yAxisVariable">

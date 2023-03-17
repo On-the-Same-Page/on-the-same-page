@@ -160,6 +160,7 @@ h1.no-show {
             /*padding-left: 20px;*/
 
             > .search-input {
+                position: relative;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -168,6 +169,13 @@ h1.no-show {
                 border: 2px solid #000000;
                 border-radius: 5px;
                 box-sizing: border-box;
+
+                > .status {
+                    position: absolute;
+                    top: calc(100% + 5px);
+                    left: 0;
+                    font-size: 14px;
+                }
 
                 > mat-icon {
                     display: block;

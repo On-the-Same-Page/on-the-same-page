@@ -135,11 +135,11 @@ export class Chart {
         setTimeout(
             () => {
                 this.marks?.classed("no-force", true);
-                d3.selectAll('select')
-                    .classed('mostly-no-show', false)
-                    .classed('click-me', true)
+                d3.selectAll("select")
+                    .classed("mostly-no-show", false)
+                    .classed("click-me", true)
                 ;
-                d3.selectAll('.search-input, .genre-buttons-container').classed('mostly-no-show', false);
+                d3.selectAll(".search-input, .genre-buttons-container").classed("mostly-no-show", false);
 
             }, 6000
         );
@@ -193,21 +193,27 @@ export class Chart {
         this.marks?.classed("dimmed", d => !d[genre]);
     }
 
-    highlightOnTextSearch(term: string) {
+    highlightOnTextSearch(term: string): number {
 
         term = term.trim().toLowerCase();
+        let amount = 0;
 
         this.marks?.classed("searched", (d: any) => {
-
             if (!term.length) return false;
 
-            const fields = ["title", "authors_list"];
+            const fields = ["title", "single_author"];
             const contains_term = fields
-                .map(field => d[field].toLowerCase().includes(term))
+                .map(field => !!(d[field]?.toLowerCase().includes(term)))
                 .reduce( (ac, cv) => ac || cv);
+
+            if (contains_term) {
+                amount++;
+                console.log(d);
+            }
+
             return contains_term;
         });
-
+        return amount;
     };
 
     protected generateScaleParameters() {

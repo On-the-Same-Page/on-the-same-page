@@ -32,6 +32,9 @@
                    [ngModel]="searchText"
                    (ngModelChange)="changeSearchText($event)">
             <mat-icon *ngIf="searchText" (click)="changeSearchText('')">clear</mat-icon>
+            <div class="status" *ngIf="searchText">
+                {{amountSearchResults}} search result(s) found.
+            </div>
         </div>
     </div>
 </div>

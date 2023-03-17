@@ -58,6 +58,7 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
     avgRatingMin$ = new BehaviorSubject<number>(0);
 
     searchText = "";
+    amountSearchResults = 0;
 
     genreFilter: Nullable<Genre> = null;
 
@@ -147,7 +148,8 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
             .filter(dp => dp.avgRating >= this.avgRatingMin$.value && dp.avgRating <= this.avgRatingMax$.value);
         this.chart.updateData(filteredData);
 
-        this.chart?.highlightOnTextSearch(this.searchText);
+        const amountSearchResults = this.chart?.highlightOnTextSearch(this.searchText) ?? 0;
+        this.amountSearchResults = this.searchText ? amountSearchResults : 0;
 
         // include test to avoid setting up and updating even when the axis are unchanged?
         this.chart.scales.set(this.chart, this.xAxisVariable, "x");
@@ -158,7 +160,7 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
             document.querySelector("h1")?.classList.remove("no-show");
             document.querySelector(".force-button")?.classList.remove("mostly-no-show");
             document.querySelector(".sidebar")?.classList.remove("mostly-no-show");
-            this.chart.marks?.classed("during-animation", false)
+            this.chart.marks?.classed("during-animation", false);
             this.never_rendered = false;
         }
 
@@ -247,6 +249,7 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
     changeSearchText(searchText: string) {
         this.searchText = searchText;
 
-        this.chart?.highlightOnTextSearch(searchText);
+        const amountSearchResults = this.chart?.highlightOnTextSearch(searchText) ?? 0;
+        this.amountSearchResults = this.searchText ? amountSearchResults : 0;
     }
 }

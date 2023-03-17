@@ -208,7 +208,6 @@ export class Chart {
 
             if (contains_term) {
                 amount++;
-                console.log(d);
             }
 
             return contains_term;

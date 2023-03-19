@@ -23,5 +23,10 @@ export class BookTooltipComponent {
         return (this.book?.x ?? 0) + 10;
     }
 
+    format_number(value: any) {
+        const number = new Intl.NumberFormat("en-US");
+        return number.format(value);
+    }
+
     readonly variableNames:any = variable_names;
 }

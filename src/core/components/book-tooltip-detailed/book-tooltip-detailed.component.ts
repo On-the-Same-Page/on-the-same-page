@@ -15,6 +15,11 @@ export class BookTooltipDetailedComponent {
 
     @Output() closeRequested = new EventEmitter<void>();
 
+    format_number(value: any) {
+        const number = new Intl.NumberFormat("en-US");
+        return number.format(value);
+    }
+
     /*
     @HostBinding("style.top.px")
     get bookPositionX(): number {

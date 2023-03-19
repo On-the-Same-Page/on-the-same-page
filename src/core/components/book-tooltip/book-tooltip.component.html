@@ -6,7 +6,7 @@
     <p class="values" *ngIf="xAxisVariable!=='initial'">
 
         <span>{{variableNames[xAxisVariable]}}</span>:
-        <span>{{book?.bookData?.[xAxisVariable]}}</span>
+        <span>{{xAxisVariable == "ratingsCount" ? format_number(book?.bookData?.[xAxisVariable]) : book?.bookData?.[xAxisVariable]}}</span>
 
     </p>
 
@@ -14,7 +14,8 @@
 
 
         <span>{{variableNames[yAxisVariable]}}</span>:
-        <span>{{book?.bookData?.[yAxisVariable]}}</span>
+        <span>{{yAxisVariable == "ratingsCount" ? format_number(book?.bookData?.[yAxisVariable]) : book?.bookData?.[yAxisVariable]}}</span>
+
 
     </p>
 </div>

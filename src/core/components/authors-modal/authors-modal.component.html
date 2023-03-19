@@ -16,7 +16,7 @@
     <div class="author" *ngFor="let author of AUTHORS_DATA">
         <div class="favorite-book">
             <div class="favorite-book-title">Favorite book:</div>
-            <div class="favorite-book-content">"{{author.book}}"</div>
+            <div class="favorite-book-content">"<a [href]="author.url" target="_blank" rel="noopener noreferrer">{{author.book}}</a>"</div>
         </div>
     </div>
 </div>

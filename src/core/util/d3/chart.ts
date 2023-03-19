@@ -19,6 +19,12 @@ export class Chart {
     grid_ni: number = 0;
     grid_nj: number = 0;
 
+    min_w: number = 0;
+    min_h: number = 0;
+
+    viewBox_h: number = 0;
+    viewBox_w: number = 0;
+
     data: RawDataSet;
 
     marks: Nullable<D3Selection> = null;
@@ -48,7 +54,7 @@ export class Chart {
 
         this.prepare_grid();
 
-        svg.attr("viewBox", `0 0 ${this.w} ${this.h}`);
+        svg.attr("viewBox", `0 0 ${this.viewBox_w} ${this.viewBox_h}`);
 
         this.scalesParams = this.generateScaleParameters();
 
@@ -64,8 +70,29 @@ export class Chart {
         this.grid_ni = Math.max(...this.data.map((d: any) => d.pos1_i)) + 1;
         this.grid_nj = Math.max(...this.data.map((d: any) => d.pos2_j)) + 1;
 
-        this.grid_x0 = (this.w - this.grid_ni * 2 * this.r) / 2;
-        this.grid_y0 = (this.h - this.grid_nj * 2 * this.r) / 2;
+        this.min_w = this.r * (1 + 2 * this.grid_ni) + 20;
+        this.min_h = this.r * (1 + 2 * this.grid_nj) + 20;
+
+        const aspect_ratio = this.min_w / this.min_h;
+        let ratio;
+
+        this.viewBox_w = this.w;
+        this.viewBox_h = this.h;
+
+        if (this.w < this.min_w) {
+
+            this.viewBox_w = this.min_w;
+            ratio = this.min_w / this.w;
+
+            this.viewBox_h = this.h * ratio < this.min_h ? this.min_h : this.h * ratio;
+
+        }
+        //this.viewBox_w =  ? this.min_w : this.w;
+        //this.viewBox_h = (this.h < this.min_h) ? this.min_h : this.h;
+
+
+        this.grid_x0 = (this.viewBox_w - this.grid_ni * 2 * this.r) / 2;
+        this.grid_y0 = (this.viewBox_h - this.grid_nj * 2 * this.r) / 2;
 
         console.log(this.grid_ni, this.grid_nj, this.grid_x0, this.grid_y0, this.h);
 
@@ -83,8 +110,8 @@ export class Chart {
             .attr("cy", 0)
             .attr("r", this.r)
             .attr("transform", (d: any) => {
-                d.x = Math.random() * this.w;
-                d.y = Math.random() * this.h;
+                d.x = Math.random() * this.viewBox_w;
+                d.y = Math.random() * this.viewBox_h;
                 return `translate(${d.x}, ${d.y})`;
             });
     }
@@ -218,8 +245,8 @@ export class Chart {
     protected generateScaleParameters() {
         return {
             ranges: {
-                x: [this.margin_l, this.w - this.margin_r],
-                y: [this.h - this.margin_v, this.margin_v]
+                x: [this.margin_l, this.viewBox_w - this.margin_r],
+                y: [this.viewBox_h - this.margin_v, this.margin_v]
             },
             domains: {
                 numPages: d3.extent(this.data, (d: any) => d.numPages),//[0, Math.max(...this.data.map((d: any) => d.numPages))],

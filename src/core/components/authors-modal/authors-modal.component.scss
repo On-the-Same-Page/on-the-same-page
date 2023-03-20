@@ -6,18 +6,27 @@
     left: 50vw;
     top: 50vh;
     transform: translate(-50%, -50%);
-    width: 900px;
+    width: 90vw;
+    max-width: 900px;
     background-color: var(--bkg-color);
     padding: 35px 25px 25px 35px;
     border: 9px solid black;
     font-size: .9rem;
+    overflow: scroll;
+    max-height: 95vh;
 }
 
 .author {
-    flex: 1;
+
+    flex: 0 0 250px;
+    padding: 25px 10px 15px 25px;
+    border: 5px solid black;
+    border-radius: 40px 20px 20px 40px;
+    box-shadow: 10px 10px lightgrey;
 
     .name {
         font-weight: bold;
+        font-size: 1rem;
     }
 }
 
@@ -25,12 +34,13 @@
     margin-top: 20px;
 }
 
-.authors-row {
+.authors-container {
+    justify-content: center;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 20px;
 }
 
 .favorite-book-content {

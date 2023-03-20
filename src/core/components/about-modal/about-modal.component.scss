@@ -6,7 +6,8 @@
     left: 50vw;
     top: 50vh;
     transform: translate(-50%, -50%);
-    width: 900px;
+    max-width: 900px;
+    width: 90vw;
     background-color: var(--bkg-color);
     padding: 35px 25px 25px 35px;
     border: 9px solid black;

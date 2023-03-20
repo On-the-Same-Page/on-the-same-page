@@ -61,6 +61,7 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
     amountSearchResults = 0;
 
     genreFilter: Nullable<Genre> = null;
+    boolAwardHighlight: boolean = false;
 
     authorsShown: boolean = false;
     aboutShown: boolean = false;
@@ -93,7 +94,17 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
         } else {
             this.genreFilter = genre;
         }
-        this.chart?.updateGenreFilter(this.genreFilter);
+        this.chart?.updateGenreFilter(this.genreFilter, this.boolAwardHighlight);
+    }
+
+    public highlightAwards() {
+
+        document.querySelector('.awards-button')?.classList.toggle('selected');
+
+        this.boolAwardHighlight = !this.boolAwardHighlight;
+
+        this.chart?.updateGenreFilter(this.genreFilter, this.boolAwardHighlight);
+        
     }
 
     private calculateDataBounds() {

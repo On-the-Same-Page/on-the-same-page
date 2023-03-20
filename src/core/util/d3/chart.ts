@@ -166,7 +166,7 @@ export class Chart {
                     .classed("mostly-no-show", false)
                     .classed("click-me", true)
                 ;
-                d3.selectAll(".search-input, .genre-buttons-container").classed("mostly-no-show", false);
+                d3.selectAll(".search-input, .genre-buttons-container, .awards-button-container").classed("mostly-no-show", false);
 
             }, 6000
         );
@@ -211,13 +211,33 @@ export class Chart {
         });
     }
 
-    updateGenreFilter(genre: Nullable<Genre>) {
+    updateGenreFilter(genre: Nullable<Genre>, boolAwardHighlight: boolean) {
         if (!genre) {
-            this.marks?.classed("dimmed", false);
-            return;
+
+            if (!boolAwardHighlight) {
+
+                this.marks?.classed("dimmed", false);
+                return;
+
+            } else {
+
+                this.marks?.classed("dimmed", d => !d['any_award']);
+
+            }
+
+        } else {
+
+            if (!boolAwardHighlight) {
+
+                this.marks?.classed("dimmed", d => !d[genre]);
+
+            }
+
+            else this.marks?.classed("dimmed", d => !( d[genre] && d['any_award']));
+
         }
 
-        this.marks?.classed("dimmed", d => !d[genre]);
+        
     }
 
     highlightOnTextSearch(term: string): number {

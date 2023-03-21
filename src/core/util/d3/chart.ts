@@ -270,7 +270,7 @@ export class Chart {
             },
             domains: {
                 numPages: d3.extent(this.data, (d: any) => d.numPages),//[0, Math.max(...this.data.map((d: any) => d.numPages))],
-                avgRating: [0, 5],
+                avgRating: d3.extent(this.data, (d: any) => d.avgRating),
                 ratingsCount: d3.extent(this.data, (d: any) => d.ratingsCount),//[0, Math.max(...this.data.map((d: any) => d.ratingsCount))],
                 year_publication: d3.extent(this.data, (d: any) => d.year_publication)
             },

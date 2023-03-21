@@ -127,7 +127,7 @@ export class ExplorativeScatterplotComponent implements OnChanges, OnInit {
         this.numPagesMax$.next(numPagesUpperBound as unknown as number);
 
 
-        const [avgRatingLowerBound, avgRatingUpperBound] = [0, 5];//d3.extent(this.rawDataSet, (d: any) => d.avgRating);
+        const [avgRatingLowerBound, avgRatingUpperBound] = d3.extent(this.rawDataSet, (d: any) => d.avgRating);
         this.avgRatingLowerBound = avgRatingLowerBound as unknown as number;
         this.avgRatingUpperBound = avgRatingUpperBound as unknown as number;
         this.avgRatingMin$.next(avgRatingLowerBound as unknown as number);
